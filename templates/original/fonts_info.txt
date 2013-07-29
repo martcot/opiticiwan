@@ -1,0 +1,4 @@
+List of Fonts used in template 
+
+Covered By Your Grace 	http://www.google.com/webfonts/specimen/Covered+By+Your+Grace
+Opensans		http://www.google.com/webfonts/list?family=Open+Sans&subset=latin
