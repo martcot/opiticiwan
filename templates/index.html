@@ -1,21 +1,19 @@
+{% load cms_tags sekizai_tags menu_tags compress %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  	<title>Home</title>
+  	<title>Conseil des Atikamekw d'Opitciwan</title>
   	<meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Conseil des Atikamekw d'Opitciwan">
     <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
 	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
     
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/slider.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+    {% render_block "css" %}
     
-    <script src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
-    <script src="{{ STATIC_URL }}js/script.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
 <!--[if lt IE 8]>
    <div style=' clear: both; text-align:center; position: relative;'>
      <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -29,206 +27,235 @@
 <![endif]-->
 </head>
 <body>
+	{% cms_toolbar %}
 <!--==============================header=================================-->
-    <header>
+    <header class="clearfix">
     	<div class="container_24">
-        	<article class="grid_6">
-            <h1><a class="logo" href="index.html">Secondbirth</a></h1>
-            </article>
-            <article class="grid_4">
-            	<div class="head-box1">drug &amp; alcohol treatment center</div>
+        	<article class="grid_10">
+            	<h1><a class="logo" href="index.html">Conseil des Atikamekw d'Opitciwan</a></h1>
             </article>
             <article class="grid_6 push_3">
             	<div class="head-box1 p6">
-                P.O. Box 160001<br />
-                1 Lone Mountain Trail<br />
-                Big Sky, MT 59716<br />
-                800.548.4486 or 406.995.5000
+                Rue Amisk, Opiticiwan<br />
+				Québec G0W 3B0<br />
+                <span>T  819.974.8837<br />
+				F  819.974.8828</span>
                 </div>
             </article>
             <article class="grid_5 push_3">
             	<div class="head-box2">
-                	<span class="text1">1 800 123 1234</span>
-                    <span class="text2">E -mail:</span> <a class="link1" href="#">mail@demolink.org</a>
+                	<ul class="sbuttons">
+                		<li class="rss"><a>RSS</a></li>
+                		<li class="fb"><a>Facebook</a></li>
+                		<li class="tw"><a>Twitter</a></li>
+                	</ul>
+                	<form class="search" id="searchForm" method="post">
+                		<input name="search" type="text"/>
+                		<a class="submit" onclick="$('#searchForm').submit();">Rechercher</a>
+                	</form>
                 </div>
             </article>
             <div class="clear"></div>
             <div class="head-line"></div>            
         </div>
-        <div id="slide">
-            <div class="slider">
-                    <ul class="items">
-                        <li><img src="{{ STATIC_URL }}img/slide-1.jpg" alt="" /><div class="banner">activities <br />to get you fit <br />and healthy</div></li>
-                        <li><img src="{{ STATIC_URL }}img/slide-2.jpg" alt="" /><div class="banner p7">find the right balance with our experienced, professional team</div></li>
-                        <li><img src="{{ STATIC_URL }}img/slide-3.jpg" alt="" /><div class="banner p8">you can begin a new life With our help!</div></li>
-                    </ul>                
-                </div>
-            </div>
         <div class="main">
-        <nav>
+			<div id="myCarousel" class="carousel slide carousel-fade">
+			  <div class="carousel-inner">
+				<div class="item active" idx=1>
+                    <img style="width:100%" src="{{ STATIC_URL }}img/slide1.jpg" title="" />
+                </div>
+				<div class="item" idx=2>
+					<img style="width:100%" src="{{ STATIC_URL }}img/slide-1.jpg" title="" />
+				</div>
+			  </div>
+			</div>
+			<ol class="carousel-linked-nav">
+			  <li class="active"><a href="#1">1</a></li>
+			  <li><a href="#2">2</a></li>
+			</ol>
+        	<nav>
                 <ul class="sf-menu">
-                    <li><a class="active" href="index.html">about us</a></li>
-                    <li><a href="index-1.html">our programs</a>
+                    <li><a class="active" href="index.html">Accueil</a></li>
+                    <li><a href="#">Conseil Atikamek</a>
                     	<ul>
-                            <li><a href="more.html">Cognitive Behavior Therapy</a></li>
-                            <li><a href="more.html">Neurocognitive Therapy</a></li>
-                            <li><a href="more.html">Neurochemical Therapy</a>
+                            <li><a href="#">Sous-menu 1</a></li>
+                            <li><a href="#">Sous-menu 2</a></li>
+                            <li><a href="#">Sous-menu 3</a>
                             	<ul>
-                                    <li><a href="more.html">Alcohol</a></li>
-                                    <li><a href="more.html">Cocaine / Crack Cocaine</a></li>
-                                    <li><a href="more.html">Opiates / Opioids</a></li>
+                                    <li><a href="#">Sous-sous menu 1</a></li>
+                                    <li><a href="#">Sous-sous menu 2</a></li>
+                                    <li><a href="#">Sous-sous menu 3</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="index-2.html">addiction treatment</a></li>
-                    <li><a href="index-3.html">our residence</a></li>
-                    <li><a href="index-4.html">resources</a></li>
-                    <li><a class="last3" href="index-5.html">contacts</a></li>
+                    <li><a href="#">Environnement</a></li>
+                    <li><a href="#">Tourisme et loisirs</a></li>
+                    <li><a href="#">Ressources</a></li>
+                    <li><a class="last3" href="#">Contact</a></li>
                 </ul>
                 <div class="clear"></div>
-            </nav>
-            </div>
+        	</nav>
+        </div>
     </header>
-    
 	<!--==============================content================================-->
-    <section id="content" class="p14">
+    <section id="content">
             <div class="container_24">
                 <div class="wrapper p11">
                     <article class="grid_24">
                     	<div class="page1-box1">
                         	<div class="inner1 maxheight">
-                            	<span class="text3">Drug <br />rehab</span>
+                            	<span class="text3">Titre nouvelle 1</span>
                                 <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="more.html">read more</a>
+                                <a class="link2" href="#">Lire la suite</a>
                             </div>
                             <div class="inner1 maxheight">
-                            	<span class="text3">alcohol<br />rehab</span>
+                            	<span class="text3">Titre nouvelle 2</span>
                                 <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="more.html">read more</a>
+                                <a class="link2" href="#">Lire la suite</a>
                             </div>
                             <div class="inner1 maxheight">
-                            	<span class="text3">addiction<br />treatment</span>
+                            	<span class="text3">Titre nouvelle 3</span>
                                 <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="more.html">read more</a>
+                                <a class="link2" href="#">Lire la suite</a>
                             </div>
                             <div class="inner1 last4 maxheight">
-                            	<span class="text3">rehab center`s<br />features</span>
+                            	<span class="text3">Titre<br/>nouvelle 4</span>
                                 <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="more.html">read more</a>
+                                <a class="link2" href="#">Lire la suite</a>
                             </div>
                         </div>
                     </article>
                 </div>
                 <div class="wrapper">
-                	<article class="grid_12">
-                    	<h3 class="p9 p10">Looking For Drug and <br />Alcohol Rehab? Find <br />Help, Find Hope </h3>
-                        <article class="grid_5 alpha">
-                        	<p class="p33">Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient 
-montes ascetur ridiculus mus. Fusce feugiat malesuada odio. Morbi nunc odio gravida at </p>
-<strong class="text4">Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient 
-montes ascetur ridiculus
-fusce feugiat malesuada.</strong>
-<a class="link3" href="more.html">read more</a>
+                	<article class="grid_10">
+                    	<h3 class="p9 p10">La communauté<br/>Atikamekw  d’Opiticiwan</h3>
+                        <article class="grid_6 alpha">
+							<strong class="text4">Une culture qui expérimente le passage d'un mode de vie traditionnel à un mode de vie tourné 
+							sur la modernité et le développement dans le respect de ses valeurs, ses traditions et de ses coutumes.</strong>
+							<p class="p33">Opitciwan fait partie de la Nation Atikamekw, qui compte deux autres communautés soit Wemotaci et Manawan. Le mot Atikamekw, qui signifie Poisson Blanc en français, fait référence à la corégone.		
+							<p class="p33">Opitciwan se situe au coeur du Québec. C’est à dire vers le nord du Réservoire Gouin.</p>
                         </article>
                         <article class="grid_3">
-                        	<figure class="page1-img1"><img src="{{ STATIC_URL }}img/page1-img1.jpg" alt=""></figure>
-                            <figure class="page1-img1"><img src="{{ STATIC_URL }}img/page1-img2.jpg" alt=""></figure>
-                            <a class="link3 p12" href="more.html">read graduate testimonials</a>
-                        </article>
-                        <article class="grid_3 omega">
-                        	<figure class="page1-img1"><img src="{{ STATIC_URL }}img/page1-img3.jpg" alt=""></figure>
-                            <figure class="page1-img1"><img src="{{ STATIC_URL }}img/page1-img4.jpg" alt=""></figure>
+                            <figure class="page1-img1"><img src="{{ STATIC_URL }}img/img1.jpg" alt=""></figure>
+                            <a class="link3 p12" href="#">Visualiser la carte géographique</a>
                         </article>
                         <div class="clear"></div>
                     </article>
-                    <article class="grid_6">
-                    	<h3 class="p9">drug addiction<br />information</h3>
-                        <div class="page1-box2 p15">
-                        <strong class="text7">01/</strong><span class="text5 extra-wrap p36">cocaine</span>
-                        <div class="clear"></div>
-                        <a class="link4" href="more.html">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque.</a>
-                        </div>
-                         <div class="page1-box2 p15">
-                        <strong class="text7">02/</strong><span class="text5 extra-wrap p36">heroine</span>
-                        <div class="clear"></div>
-                        <a class="link4" href="more.html">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque.</a>
-                        </div>
-                         <div class="page1-box2 p15">
-                        <strong class="text7">03/</strong><span class="text5 extra-wrap p36">meth</span>
-                        <div class="clear"></div>
-                        <a class="link4" href="more.html">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque.</a>
-                        </div>
-                         <div class="page1-box2">
-                        <strong class="text7">04/</strong><span class="text5 extra-wrap p36">alcohol</span>
-                        <div class="clear"></div>
-                        <a class="link4" href="more.html">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque.</a>
+                    <article class="grid_8">
+                        <div class="page1-box2">
+                        	<h3 class="p9">Chef de la communauté</h3>
+                    		<h4 class="p12">M.christian awashish</h4>
+                    		<figure class="page1-img2"><img src="{{ STATIC_URL }}img/img2.jpg" alt=""></figure>
+                        	<p class="p33">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque. 
+                        	penatibus et magnis dis parturient montes ascetur</p>
+                        	<p class="p33">Morbi nunc odio gravida at cursus nec luctus a lorem.
+                        	Maecenas tristique orci ac sem. Duis Morbi nunc odio gravida at cursus nec luctus a</p>
+                        	<p class="p33">lorem.  Maecenas tristique orci ac semodio gravida at cursus nec luctus a lorem.
+                        	Maecenas tristique orci ac sem. Duis</p>
+                        	<a class="link3 p12" href="#">Lire la suite</a>
                         </div>
                     </article>
                     <article class="grid_5 push_1">
-                    	<h3 class="p9">services</h3>
-                        <ul class="list1">
-                            <li><a href="#">Praesent vestibulum aenean</a></li>
-                            <li><a href="#">Nonummy hendrerit mauris</a></li>
-                            <li><a href="#">Cum sociis natoque</a></li>
-                            <li><a href="#">Penatibus et magnis dis </a></li>
-                            <li><a href="#">Parturient montes ascetur</a></li>
-                            <li><a href="#">Fusce feugiat malesuada </a></li>
-                            <li><a href="#">Morbi nunc odio gravida at</a></li>
-                        </ul>
+                    	<div class="page1-box3">
+	                    	<h3 class="p9">Sondage</h3>
+	                    	<h4 class="p12">Question pour le sondage No.1</h4>
+	                        <ul class="list1">
+	                            <li><a href="#">Premier choix</a></li>
+	                            <li><a href="#">Deuxième choix</a></li>
+	                            <li><a href="#">Troisième choix</a></li>
+	                            <li><a href="#">Quatrième choix</a></li>
+	                        </ul>
+	                    </div>
                         <div class="banner1">
-                        	<span>Need expert 
-advice? </span>
-                            <strong>call toll-free:</strong>
-                            <i>1 800 123 1234</i>
+                        	<span>Suivez-nous</span>
+                            <strong>Par courriel</strong>
                         </div>
                     </article>
                 </div>
             </div>
     </section>
-    
 	<!--==============================footer=================================-->
     <footer>
         <div class="container_24">
         	<div class="wrapper">
-            	<article class="grid_6">
-                	<div class="foot-page1"><figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
-                     © 2013 | <a href="index-6.html">Privacy Policy</a> <div class="clear"></div><!-- {%FOOTER_LINK} --></div>
+            	<article class="grid_8">
+                	<div class="foot-page1">
+                		<figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
+                    	<span>© 2013 | Tout droit réservé<br/>Conception | D-Modules</span>
+                    	<div class="clear"></div>
+                	</div>
                 </article>
                 <article class="grid_5">
                 	<ul class="list2">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Our Staff</a></li>
-                        <li><a href="#">Our Success Stories</a></li>
-                        <li><a href="#">Graduate Testimonials</a></li>
+                        <li><a href="#">Lien fdgg 1</a></li>
+                        <li><a href="#">Lien gfdgfdgfdfdg 2</a></li>
+                        <li><a href="#">Lien fdgfdgf 3</a></li>
+                        <li><a href="#">Lien fdgfdgfd 4</a></li>
                     </ul>
                 </article>
                 <article class="grid_5">
                 	<ul class="list2">
-                        <li><a href="#">Recovery Program</a></li>
-                        <li><a href="#">Our Approach</a></li>
-                        <li><a href="#">Alcohol Rehab</a></li>
-                        <li><a href="#">Drug Rehab</a></li>
+                        <li><a href="#">Lien fdgfg 5</a></li>
+                        <li><a href="#">Lien dg 6</a></li>
+                        <li><a href="#">Lien dfggfdg 7</a></li>
+                        <li><a href="#">Lien fdgfdg 8</a></li>
                     </ul>
                 </article>
-                <article class="grid_4">
-                	<ul class="list2">
-                        <li><a href="#">For Individuals</a></li>
-                        <li><a href="#">For Families</a></li>
-                        <li><a href="#">For Companies</a></li>
-                        <li><a href="#">US Visitors</a></li>
-                    </ul>
-                </article>
-                <article class="grid_4">
-                	<ul class="list2">
-                        <li><a href="#">Amenities</a></li>
-                        <li><a href="#">Our Activities</a></li>
-                        <li><a href="#">Nutrition</a></li>
-                        <li><a href="#">Environment</a></li>
-                    </ul>
+                <article class="grid_6">
+					<div class="foot-page2">
+						<span class="title">Pour nous joindre</span><br/>
+						<span class="name">Conseil des Atikamec d’Opticiwan</span><br/>
+						22 rue Amisk, Opticiwan<br/>
+						(Québec)  G0W 3B0<br/>
+						T /819-974-8837  F / 819 974-8828
+					</div>
                 </article>
             </div>        
         </div>
     </footer>
+    
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.ui.totop.js"></script>
+    <script src="{{ STATIC_URL }}js/script.js"></script>
+    <script>
+		$('#myCarousel').carousel();
+		$('.carousel-linked-nav > li > a').click(function() {
+		    // grab href, remove pound sign, convert to number
+		    var item = Number($(this).attr('href').substring(1));
+		
+		    // slide to number -1 (account for zero indexing)
+		    $('#myCarousel').carousel(item - 1);
+		
+		    // remove current active class
+		    $('.carousel-linked-nav .active').removeClass('active');
+		
+		    // add active class to just clicked on item
+		    $(this).parent().addClass('active');
+		
+		    // don't follow the link
+		    return false;
+		});
+		
+		/* AUTOPLAY NAV HIGHLIGHT */
+		
+		// bind 'slid' function
+		$('#myCarousel').bind('slid', function() {
+		
+		    // remove active class
+		    $('.carousel-linked-nav .active').removeClass('active');
+		
+		    // get index of currently active item
+		    var idx = $('#myCarousel .item.active').index();
+		
+		    // select currently active item and add active class
+		    $('.carousel-linked-nav li:eq(' + idx + ')').addClass('active');
+		
+		});
+    </script>
+    {% render_block "js" %}
 </body>
 </html>
