@@ -77,8 +77,8 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',          
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'compressor.finders.CompressorFinder',
 )
@@ -126,9 +126,32 @@ TEMPLATE_DIRS = (
 )
 
 CMS_TEMPLATES = (
-    ('index.html', u'Accueil'),
-	("content.html",u"Contenu"),
+    ("index.html",u"Accueil"),
+	("content.html",u"Contenu - menu gauche vide"),
+    ("content_children.html",u"Contenu - menu enfants"),
 )
+
+#CMS_APPHOOKS = (
+#    'services.cms_app.ServicesApp',
+#    'news.cms_app.NewApp',
+#    'submissions.cms_app.SubmissionApp',
+#)
+
+CMS_SEO_FIELDS = True
+CMS_USE_TINYMCE = True
+
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins' : "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,table",
+    'theme': "advanced",
+    'width': "640",
+    'height': "500",
+    'theme_advanced_toolbar_location': "top",
+}
+TINYMCE_FILEBROWSER = True
+
+FILEBROWSER_MEDIA_ROOT = MEDIA_ROOT
+FILEBROWSER_MEDIA_URL = MEDIA_URL
+FILEBROWSER_DIRECTORY = "uploads/"
 
 INSTALLED_APPS = (
     'admin_tools',
@@ -143,22 +166,28 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',	
 	'django.contrib.comments',
     
+    'grappelli',
+    'filebrowser',
+    'tinymce',
+    'south',
+    'menus',
     'cms',
+    'cms.plugins.video',
+    'cms.plugins.snippet',
+    'cms.plugins.picture',
+    'cms.plugins.text',
     'tagging',
 	'crispy_forms',
     'mptt',
-    'menus',
     'sekizai',
     'compressor',
-    'ckeditor',
     'sorl.thumbnail',
 
+    'app',
+    'news',
+    'polls',
 )
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -176,30 +205,3 @@ LOGGING = {
         },
     }
 }
-
-
-CKEDITOR_UPLOAD_PATH = os.path.join(PROJECT_PATH, "media/uploads")
-
-#CMS_APPHOOKS = (
-#    'services.cms_app.ServicesApp',
-#    'news.cms_app.NewApp',
-#    'submissions.cms_app.SubmissionApp',
-#)
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Advanced',
-        'height': 300,
-        'width': 800,
-        "forcePasteAsPlainText": True
-    },
-}
-#CMS_SEO_FIELDS = True
-#CMS_APPHOOKS = (
-#    'services.cms_app.ServicesApp',
- #   'news.cms_app.NewApp',
-#    'submissions.cms_app.SubmissionApp',
-#)
-CMS_SEO_FIELDS = True
-
-

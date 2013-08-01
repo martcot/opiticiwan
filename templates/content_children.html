@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+{% block headerclass %}content{% endblock %}
+
+{% block content %}
+            <div class="container_24 content_wrapper">
+            	<div class="wrapper">
+	            	<ul id="breadcrumb" class="clearfix">
+	            		{% show_breadcrumb %}
+	            	</ul>
+	            </div>
+                <div class="wrapper">
+                	<nav class="menu grid_6">
+						<ul>
+							{% show_sub_menu 1 %}
+						</ul>
+                        <div class="clear"></div>
+                    </nav>
+                    <article class="grid_18">
+                        {% placeholder "content" %}
+                    </article>
+                </div>
+            </div>
+{% endblock %}

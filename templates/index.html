@@ -1,261 +1,78 @@
-{% load cms_tags sekizai_tags menu_tags compress %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  	<title>Conseil des Atikamekw d'Opitciwan</title>
-  	<meta charset="utf-8">
-    <meta name="description" content="Conseil des Atikamekw d'Opitciwan">
-    <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
-	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
-    <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
-    
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
-    {% render_block "css" %}
-    
-<!--[if lt IE 8]>
-   <div style=' clear: both; text-align:center; position: relative;'>
-     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-       <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-    </a>
-  </div>
-<![endif]-->
-<!--[if lt IE 9]>
-	<script src="{{ STATIC_URL }}js/html5.js"></script>
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/ie.css"> 
-<![endif]-->
-</head>
-<body>
-	{% cms_toolbar %}
-<!--==============================header=================================-->
-    <header class="clearfix">
-    	<div class="container_24">
-        	<article class="grid_10">
-            	<h1><a class="logo" href="index.html">Conseil des Atikamekw d'Opitciwan</a></h1>
-            </article>
-            <article class="grid_6 push_3">
-            	<div class="head-box1 p6">
-                Rue Amisk, Opiticiwan<br />
-				Québec G0W 3B0<br />
-                <span>T  819.974.8837<br />
-				F  819.974.8828</span>
-                </div>
-            </article>
-            <article class="grid_5 push_3">
-            	<div class="head-box2">
-                	<ul class="sbuttons">
-                		<li class="rss"><a>RSS</a></li>
-                		<li class="fb"><a>Facebook</a></li>
-                		<li class="tw"><a>Twitter</a></li>
-                	</ul>
-                	<form class="search" id="searchForm" method="post">
-                		<input name="search" type="text"/>
-                		<a class="submit" onclick="$('#searchForm').submit();">Rechercher</a>
-                	</form>
-                </div>
-            </article>
-            <div class="clear"></div>
-            <div class="head-line"></div>            
-        </div>
-        <div class="main">
+{% extends "base.html" %}
+{% load cms_tags sekizai_tags i18n %}
+
+{% block slideshow %}
 			<div id="myCarousel" class="carousel slide carousel-fade">
 			  <div class="carousel-inner">
 				<div class="item active" idx=1>
                     <img style="width:100%" src="{{ STATIC_URL }}img/slide1.jpg" title="" />
                 </div>
-				<div class="item" idx=2>
-					<img style="width:100%" src="{{ STATIC_URL }}img/slide-1.jpg" title="" />
-				</div>
 			  </div>
 			</div>
 			<ol class="carousel-linked-nav">
 			  <li class="active"><a href="#1">1</a></li>
-			  <li><a href="#2">2</a></li>
 			</ol>
-        	<nav>
-                <ul class="sf-menu">
-                    <li><a class="active" href="index.html">Accueil</a></li>
-                    <li><a href="#">Conseil Atikamek</a>
-                    	<ul>
-                            <li><a href="#">Sous-menu 1</a></li>
-                            <li><a href="#">Sous-menu 2</a></li>
-                            <li><a href="#">Sous-menu 3</a>
-                            	<ul>
-                                    <li><a href="#">Sous-sous menu 1</a></li>
-                                    <li><a href="#">Sous-sous menu 2</a></li>
-                                    <li><a href="#">Sous-sous menu 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Environnement</a></li>
-                    <li><a href="#">Tourisme et loisirs</a></li>
-                    <li><a href="#">Ressources</a></li>
-                    <li><a class="last3" href="#">Contact</a></li>
-                </ul>
-                <div class="clear"></div>
-        	</nav>
-        </div>
-    </header>
-	<!--==============================content================================-->
-    <section id="content">
+{% endblock %}
+{% block content %}
             <div class="container_24">
+            	{% if news %}
                 <div class="wrapper p11">
                     <article class="grid_24">
                     	<div class="page1-box1">
-                        	<div class="inner1 maxheight">
-                            	<span class="text3">Titre nouvelle 1</span>
-                                <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="#">Lire la suite</a>
+                    		{% for new in news %}
+                        	<div class="inner1 maxheight {% if forloop.last %}last4{% endif %}">
+                            	<span class="text3">{{new.title}}</span>
+                                <p>{{new.short_content}}</p>
+                                <a class="link2" href="/nouvelles/{{new.slug}}/">{% trans "Lire la suite" %}</a>
                             </div>
-                            <div class="inner1 maxheight">
-                            	<span class="text3">Titre nouvelle 2</span>
-                                <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="#">Lire la suite</a>
-                            </div>
-                            <div class="inner1 maxheight">
-                            	<span class="text3">Titre nouvelle 3</span>
-                                <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="#">Lire la suite</a>
-                            </div>
-                            <div class="inner1 last4 maxheight">
-                            	<span class="text3">Titre<br/>nouvelle 4</span>
-                                <p>Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus et magnis dis parturient.</p>
-                                <a class="link2" href="#">Lire la suite</a>
-                            </div>
+                            {% endfor %}
                         </div>
                     </article>
+                    <a class="news link3" href="/nouvelles/">Voir toutes les nouvelles</a>
                 </div>
+                {% endif %}
                 <div class="wrapper">
                 	<article class="grid_10">
-                    	<h3 class="p9 p10">La communauté<br/>Atikamekw  d’Opiticiwan</h3>
-                        <article class="grid_6 alpha">
-							<strong class="text4">Une culture qui expérimente le passage d'un mode de vie traditionnel à un mode de vie tourné 
-							sur la modernité et le développement dans le respect de ses valeurs, ses traditions et de ses coutumes.</strong>
-							<p class="p33">Opitciwan fait partie de la Nation Atikamekw, qui compte deux autres communautés soit Wemotaci et Manawan. Le mot Atikamekw, qui signifie Poisson Blanc en français, fait référence à la corégone.		
-							<p class="p33">Opitciwan se situe au coeur du Québec. C’est à dire vers le nord du Réservoire Gouin.</p>
-                        </article>
-                        <article class="grid_3">
-                            <figure class="page1-img1"><img src="{{ STATIC_URL }}img/img1.jpg" alt=""></figure>
-                            <a class="link3 p12" href="#">Visualiser la carte géographique</a>
-                        </article>
-                        <div class="clear"></div>
+                		<div class="page1-box4">
+	                		{% placeholder "home_title1" %}
+	                        <article class="grid_6 alpha">
+								{% placeholder "home_content1" %}
+	                        </article>
+	                        <article class="grid_3">
+	                            {% placeholder "home_content_left1" %}
+	                        </article>
+	                        <div class="clear"></div>
+	                	</div>
                     </article>
                     <article class="grid_8">
                         <div class="page1-box2">
-                        	<h3 class="p9">Chef de la communauté</h3>
-                    		<h4 class="p12">M.christian awashish</h4>
-                    		<figure class="page1-img2"><img src="{{ STATIC_URL }}img/img2.jpg" alt=""></figure>
-                        	<p class="p33">Praesent vestibulum aenean nonummy hendrerit mauris cum sociis natoque. 
-                        	penatibus et magnis dis parturient montes ascetur</p>
-                        	<p class="p33">Morbi nunc odio gravida at cursus nec luctus a lorem.
-                        	Maecenas tristique orci ac sem. Duis Morbi nunc odio gravida at cursus nec luctus a</p>
-                        	<p class="p33">lorem.  Maecenas tristique orci ac semodio gravida at cursus nec luctus a lorem.
-                        	Maecenas tristique orci ac sem. Duis</p>
-                        	<a class="link3 p12" href="#">Lire la suite</a>
+							{% placeholder "home_content2" %}
                         </div>
                     </article>
                     <article class="grid_5 push_1">
-                    	<div class="page1-box3">
-	                    	<h3 class="p9">Sondage</h3>
-	                    	<h4 class="p12">Question pour le sondage No.1</h4>
-	                        <ul class="list1">
-	                            <li><a href="#">Premier choix</a></li>
-	                            <li><a href="#">Deuxième choix</a></li>
-	                            <li><a href="#">Troisième choix</a></li>
-	                            <li><a href="#">Quatrième choix</a></li>
-	                        </ul>
-	                    </div>
+{{poll|safe}}
                         <div class="banner1">
-                        	<span>Suivez-nous</span>
-                            <strong>Par courriel</strong>
+                        	<span>{% trans "Suivez-nous" %}</span>
+                            <strong>{% trans "Par courriel" %}</strong>
                         </div>
                     </article>
                 </div>
             </div>
-    </section>
-	<!--==============================footer=================================-->
-    <footer>
-        <div class="container_24">
-        	<div class="wrapper">
-            	<article class="grid_8">
-                	<div class="foot-page1">
-                		<figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
-                    	<span>© 2013 | Tout droit réservé<br/>Conception | D-Modules</span>
-                    	<div class="clear"></div>
-                	</div>
-                </article>
-                <article class="grid_5">
-                	<ul class="list2">
-                        <li><a href="#">Lien fdgg 1</a></li>
-                        <li><a href="#">Lien gfdgfdgfdfdg 2</a></li>
-                        <li><a href="#">Lien fdgfdgf 3</a></li>
-                        <li><a href="#">Lien fdgfdgfd 4</a></li>
-                    </ul>
-                </article>
-                <article class="grid_5">
-                	<ul class="list2">
-                        <li><a href="#">Lien fdgfg 5</a></li>
-                        <li><a href="#">Lien dg 6</a></li>
-                        <li><a href="#">Lien dfggfdg 7</a></li>
-                        <li><a href="#">Lien fdgfdg 8</a></li>
-                    </ul>
-                </article>
-                <article class="grid_6">
-					<div class="foot-page2">
-						<span class="title">Pour nous joindre</span><br/>
-						<span class="name">Conseil des Atikamec d’Opticiwan</span><br/>
-						22 rue Amisk, Opticiwan<br/>
-						(Québec)  G0W 3B0<br/>
-						T /819-974-8837  F / 819 974-8828
-					</div>
-                </article>
-            </div>        
-        </div>
-    </footer>
-    
-    <script src="{{ STATIC_URL }}js/jquery.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.ui.totop.js"></script>
-    <script src="{{ STATIC_URL }}js/script.js"></script>
+{% endblock %}
+{% addtoblock "js" %}
     <script>
 		$('#myCarousel').carousel();
 		$('.carousel-linked-nav > li > a').click(function() {
-		    // grab href, remove pound sign, convert to number
 		    var item = Number($(this).attr('href').substring(1));
-		
-		    // slide to number -1 (account for zero indexing)
 		    $('#myCarousel').carousel(item - 1);
-		
-		    // remove current active class
 		    $('.carousel-linked-nav .active').removeClass('active');
-		
-		    // add active class to just clicked on item
 		    $(this).parent().addClass('active');
-		
-		    // don't follow the link
 		    return false;
 		});
-		
-		/* AUTOPLAY NAV HIGHLIGHT */
-		
-		// bind 'slid' function
 		$('#myCarousel').bind('slid', function() {
-		
-		    // remove active class
 		    $('.carousel-linked-nav .active').removeClass('active');
-		
-		    // get index of currently active item
 		    var idx = $('#myCarousel .item.active').index();
-		
-		    // select currently active item and add active class
 		    $('.carousel-linked-nav li:eq(' + idx + ')').addClass('active');
-		
 		});
     </script>
-    {% render_block "js" %}
-</body>
-</html>
+{% endaddtoblock %}

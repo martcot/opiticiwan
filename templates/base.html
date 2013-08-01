@@ -1,0 +1,112 @@
+{% load cms_tags sekizai_tags menu_tags placeholder_tags compress i18n %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  	<title>{% page_attribute page_title %} | Opiticiwan.ca</title>
+  	<meta charset="utf-8">
+    <meta name="description" content="{% page_attribute meta_description %}">
+    <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
+	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+    {% render_block "css" %}
+    
+<!--[if lt IE 8]>
+   <div style=' clear: both; text-align:center; position: relative;'>
+     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+       <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+    </a>
+  </div>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="{{ STATIC_URL }}js/html5.js"></script>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/ie.css"> 
+<![endif]-->
+</head>
+<body>
+	{% cms_toolbar %}
+<!--==============================header=================================-->
+    <header class="clearfix {% block headerclass %}{% endblock %}">
+    	<div class="container_24">
+        	<article class="grid_10">
+            	<h1><a class="logo" href="index.html">Conseil des Atikamekw d'Opitciwan</a></h1>
+            </article>
+            <article class="grid_6 push_3">
+            	<div class="head-box1 p6">
+                Rue Amisk, Opiticiwan<br />
+				Québec G0W 3B0<br />
+                <span>T  819.974.8837<br />
+				F  819.974.8828</span>
+                </div>
+            </article>
+            <article class="grid_5 push_3">
+            	<div class="head-box2">
+                	<ul class="sbuttons">
+                		<li class="rss"><a>RSS</a></li>
+                		<li class="fb"><a>Facebook</a></li>
+                		<li class="tw"><a>Twitter</a></li>
+                	</ul>
+                	<form class="search" id="searchForm" method="post">
+                		<input name="search" type="text"/>
+                		<a class="submit" onclick="$('#searchForm').submit();">{% trans "Rechercher" %}</a>
+                	</form>
+                </div>
+            </article>
+            <div class="clear"></div>
+            <div class="head-line"></div>            
+        </div>
+        <div class="main">
+			{% block slideshow %}{% endblock %}
+        	<nav>
+                <ul class="sf-menu">
+					{% show_menu 0 3 3 3 %}
+                </ul>
+                <div class="clear"></div>
+        	</nav>
+        </div>
+    </header>
+	<!--==============================content================================-->
+    <section id="content">
+{% block content %}{% endblock %}
+    </section>
+	<!--==============================footer=================================-->
+    <footer>
+        <div class="container_24">
+        	<div class="wrapper">
+            	<article class="grid_8">
+                	<div class="foot-page1">
+                		<figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
+                    	<span>© 2013 | Tout droit réservé<br/>Conception | D-Modules</span>
+                    	<div class="clear"></div>
+                	</div>
+                </article>
+                <article class="grid_10">
+                	<ul class="list2">
+                        {% show_menu 0 0 0 0 %}
+                    </ul>
+                </article>
+                <article class="grid_6">
+					<div class="foot-page2">
+						<span class="title">{% trans "Pour nous joindre" %}</span><br/>
+						<span class="name">Conseil des Atikamec d’Opticiwan</span><br/>
+						22 rue Amisk, Opticiwan<br/>
+						(Québec)  G0W 3B0<br/>
+						T /819-974-8837  F / 819 974-8828
+					</div>
+                </article>
+            </div>        
+        </div>
+    </footer>
+    
+    <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.ui.totop.js"></script>
+    <script src="{{ STATIC_URL }}js/script.js"></script>
+    {% render_block "js" %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% load i18n %}
+                    	{% if poll %}
+                    	<div id="sondage" class="page1-box3">
+	                    	<h3 class="p9">{% trans "Sondage" %}</h3>
+	                    	<h4 class="p12">{{poll.question}}</h4>
+	                        <ul class="list1">
+	                        	{% for choice in poll.choices %}
+	                            <li><a href="/sondages/{{poll.slug}}/{{choice.id}}/">{{choice.choice}}</a></li>
+	                            {% endfor %}
+	                        </ul>
+	                    </div>
+	                    {% endif %}
