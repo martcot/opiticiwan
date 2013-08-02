@@ -1,0 +1,21 @@
+{% load cms_tags menu_tags sekizai_tags lastnews i18n %}
+
+<h4>{% trans "Archives" %}</h4>
+<form name="archive" id="archive" method="get" action="/nouvelles/">
+	<select name="mois">
+		<option value="">Mois/Année</option>
+		{% for month in menu.archives_months %}
+		<option {% if month.sel %}selected="selected" {% endif %}value="{{month.val}}">{{month.aff}}</option>
+		{% endfor %}
+	</select>
+</form>
+
+{{ request|lastnews }}
+
+{% addtoblock "js" %}
+<script>
+	$('#archive select').change(function(){
+		$('#archive').submit();
+	});
+</script>
+{% endaddtoblock %}

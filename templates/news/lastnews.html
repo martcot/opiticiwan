@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<h4>{% trans "Dernières nouvelles" %}</h4>
+<ul>
+	{% for n in lastnews %}
+	<li><a href="/nouvelles/{{n.slug}}">{{n.title}}</a></li>
+	{% endfor %}
+</ul>

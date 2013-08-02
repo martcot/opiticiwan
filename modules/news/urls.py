@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('app.views',
-    #url(r'^$', 'home', name="home"),
+urlpatterns = patterns('news.views',
+    url(r'^nouvelles/$', 'news', name="news"),
+    url(r'^nouvelles/(?P<slug>.+)/$', 'new', name="new"),
 )

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags i18n bootstrap_pagination %}
+
+{% block headerclass %}content{% endblock %}
+
+{% block content %}
+            <div class="container_24 content_wrapper news">
+            	<div class="wrapper">
+	            	<ul id="breadcrumb" class="clearfix">
+	            		{% show_breadcrumb "news/breadcrumb.html" %}
+	            	</ul>
+	            </div>
+                <div class="wrapper">
+                	<nav class="menu grid_6">
+                    	{% include "news/menu.html" %}
+                        <div class="clear"></div>
+                    </nav>
+                    <div class="grid_18">
+                    	<h2>{% trans "Nouvelles" %}</h2>
+                    	
+                        {% for new in page_news.object_list %}
+                        
+                        <article class="new">
+                        	<header>
+                        		<a href="/nouvelles/{{new.slug}}/"><h3>{{new.title}}</h3></a>
+                        	</header>
+                        	<p>{{new.short_content}}</p>
+                        	<footer>
+                        		<span>{% trans "Publié le :" %} {{new.pub_date}}</span>
+                        		<a class="link3" href="/nouvelles/{{new.slug}}/">Lire la suite</a>
+                        	</footer>
+                        </article>
+                        
+                        {% empty %}
+							{% trans "Aucune nouvelle à afficher" %}
+						{% endfor %}
+						
+						{% bootstrap_paginate page_news range=10 show_prev_next="true" show_first_last="true" %}
+                    </div>
+                </div>
+            </div>
+{% endblock %}

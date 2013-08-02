@@ -2,16 +2,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  	<title>{% page_attribute page_title %} | Opiticiwan.ca</title>
+  	<title>{% block headtitle %}{% endblock %}{% page_attribute page_title %} | Opiticiwan.ca</title>
   	<meta charset="utf-8">
     <meta name="description" content="{% page_attribute meta_description %}">
     <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
 	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
-    
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
     {% render_block "css" %}
     
 <!--[if lt IE 8]>
@@ -49,8 +48,8 @@
                 		<li class="fb"><a>Facebook</a></li>
                 		<li class="tw"><a>Twitter</a></li>
                 	</ul>
-                	<form class="search" id="searchForm" method="post">
-                		<input name="search" type="text"/>
+                	<form name="search" class="search" id="searchForm" method="get" action="/recherche/">
+                		<input name="q" type="text" value="{% block search_q %}{% endblock %}"/>
                 		<a class="submit" onclick="$('#searchForm').submit();">{% trans "Rechercher" %}</a>
                 	</form>
                 </div>
@@ -62,7 +61,7 @@
 			{% block slideshow %}{% endblock %}
         	<nav>
                 <ul class="sf-menu">
-					{% show_menu 0 3 3 3 %}
+					{% show_menu 0 3 3 3 "menu.html" %}
                 </ul>
                 <div class="clear"></div>
         	</nav>

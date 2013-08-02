@@ -153,6 +153,14 @@ FILEBROWSER_MEDIA_ROOT = MEDIA_ROOT
 FILEBROWSER_MEDIA_URL = MEDIA_URL
 FILEBROWSER_DIRECTORY = "uploads/"
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
+}
+HAYSTACK_SEARCH_ENGINE = 'simple'
+HAYSTACK_SITECONF = 'app.search'
+
 INSTALLED_APPS = (
     'admin_tools',
     'admin_tools.theming',
@@ -182,6 +190,9 @@ INSTALLED_APPS = (
     'sekizai',
     'compressor',
     'sorl.thumbnail',
+    'bootstrap-pagination',
+    'haystack',
+    'cms_search',
 
     'app',
     'news',

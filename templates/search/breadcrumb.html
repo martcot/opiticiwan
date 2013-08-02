@@ -1,0 +1,7 @@
+{% load i18n %}
+{% for ance in ancestors %}
+<li><a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a> &raquo; </li>
+{% endfor %}
+{% if page.number > 1 %}<li><a href="/recherche/?q={{query}}">{% trans "Recherche" %}</a> &raquo; </li><li>{% trans "Page" %} {{page.number}}</li>
+{% else %}<li>{% trans "Recherche" %}</li>{% endif %}
+
