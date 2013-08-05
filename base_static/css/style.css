@@ -311,6 +311,10 @@ form.search .submit{
 	right: 6px;
 }
 
+form.search .submit:hover{
+	cursor:pointer;	
+}
+
 /*** MENU ***/
 .sf-menu, .sf-menu * {
 	margin:			0;
