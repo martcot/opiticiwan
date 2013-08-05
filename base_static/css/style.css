@@ -213,7 +213,7 @@ p {
 header {
 	width:100%;
 	position:relative; 
-	z-index:2;
+	z-index:500;
 	background:#fff;
 }
 
@@ -342,14 +342,18 @@ form.search .submit:hover{
 	margin:			0;
 	padding:		0;
 	list-style:		none;
+	z-index: 9999;
 }
 
-header nav {
-	position:absolute;
+body > header{
+	z-index:500;
+}
+
+body > header nav {
 	width:100%;
 	bottom: -6px;
-	z-index:99;
 	background:url(../img/menu-bg.png) repeat 0 0 ;
+	z-index:600;
 }
 
 header.content nav {
@@ -424,6 +428,7 @@ nav ul {
     position: absolute;
     top: -999em;
     width: 266px;
+    z-index: 9999;
 }
 
 .sf-menu ul ul {
@@ -451,7 +456,6 @@ nav ul {
 .sf-menu li.sfHover ul {
 	left: 6px;
     top: 57px; /* match top ul list item height */
-	z-index:		99;
 }
 ul.sf-menu li:hover li ul,
 ul.sf-menu li.sfHover li ul {
@@ -477,13 +481,18 @@ ul.sf-menu li li li.sfHover ul {
 #content {
 	width:100%; 
 	padding:0 0 41px;
-	background:#fff;
 	position:relative;
-	z-index:1;
-	background-image:url(../img/content-bg.jpg);
-	background-size:100% auto;
-	background-repeat:no-repeat;
+	background:none;
 	min-height: 380px;
+}
+
+#content_bg{
+	z-index:-1;
+	position:fixed;
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
 }
 
 #content .content_wrapper nav.menu{
@@ -532,7 +541,6 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #content .content_wrapper img{
-	float:left;
 	margin:6px 10px 6px 0px;
 }
 
@@ -841,12 +849,23 @@ ul.sf-menu li li li.sfHover ul {
 	height:200px;
 }
 
+#content article ul, #content article ol {
+    margin: 0 0 25px 25px;
+    padding: 0;
+}
+
+#content article ul{
+	list-style:disc;
+}
+
 /******************** Footer ******************/
 body > footer {
 	width:100%; 
 	background:#fcfaf7;
 	border-top:3px solid #c6b9a6;
 	padding:30px 0 30px;
+	z-index:500;
+	position: relative;
 }
 
 .list2 a {

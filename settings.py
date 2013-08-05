@@ -112,6 +112,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
@@ -133,6 +134,7 @@ CMS_TEMPLATES = (
     ("contact.html",u"Contact"),
 	("content.html",u"Contenu - menu gauche vide"),
     ("content_children.html",u"Contenu - menu enfants"),
+    ("content_parent.html",u"Contenu - menu pages soeurs"),
 )
 
 #CMS_APPHOOKS = (
@@ -177,6 +179,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.staticfiles',	
 	'django.contrib.comments',
+    'django.contrib.messages',
     
     'grappelli',
     'filebrowser',

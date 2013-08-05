@@ -83,7 +83,7 @@
 	sf.defaults = {
 		hoverClass	: 'sfHover',
 		pathClass	: 'overideThisToUse',
-		pathLevels	: 2,
+		pathLevels	: 9999,
 		delay		: 1000,
 		animation	: {height:'show'},
 		speed		: 'normal',
