@@ -12,6 +12,7 @@ try:
 except ImportError:
     pass 
 
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
 
