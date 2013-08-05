@@ -12,6 +12,8 @@ try:
 except ImportError:
     pass 
 
+SEND_EMAILS_TO = "droberge@d-modules.com"
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
@@ -128,6 +130,7 @@ TEMPLATE_DIRS = (
 
 CMS_TEMPLATES = (
     ("index.html",u"Accueil"),
+    ("contact.html",u"Contact"),
 	("content.html",u"Contenu - menu gauche vide"),
     ("content_children.html",u"Contenu - menu enfants"),
 )

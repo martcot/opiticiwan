@@ -109,6 +109,28 @@ p {
     color:#9C8F7F;
 }
 
+.btn-orange {
+    background-color: #F68C24;
+    background-image: -moz-linear-gradient(center top , #F68C24, #F56F02);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.btn-orange:hover, .btn-orange:active, .btn-orange.active, .btn-orange.disabled, .btn-orange[disabled] {
+    background-color: #F56F02;
+    color: #FFFFFF;
+}
+.btn-orange:active, .btn-orange.active {
+}
+
+.form-actions{
+	background:none;
+	border-top:none;
+	margin:0;
+	padding:0;
+}
+
 /* Global Structure---------------------------------------- */
 /*----- txt,links,lines,titles -----*/
 .extra-wrap{overflow:hidden;display:block;}
@@ -516,8 +538,13 @@ ul.sf-menu li li li.sfHover ul {
 
 #content a.news{
 	float:right;
-	margin:20px 10px 0;
+	margin:10px 10px 0;
 	font-size:14px !important;
+}
+
+#content .page1-box1 .inner1 a.link2{
+	position:absolute;
+	bottom:35px;
 }
 
 .p14 {
@@ -534,7 +561,7 @@ ul.sf-menu li li li.sfHover ul {
     border-right: 1px solid #D96C31;
     color: #FFFFFF;
     float: left;
-    padding: 38px 15px 30px 37px;
+    padding: 38px 15px 55px 37px;
     transition: all 0.4s ease 0s;
     width: 188px;
 }
@@ -790,6 +817,30 @@ ul.sf-menu li li li.sfHover ul {
 	font-size:16px;
 }
 
+#content .contact .bloc1{
+	padding:0 0 35px;
+	border-bottom:1px #9c8f7f solid;
+	margin: 0 0 25px;
+}
+
+#content .contact #contactForm #div_id_nom, #content .contact #contactForm #div_id_courriel{
+	float:left;
+	width:50%;
+}
+
+#content .contact #contactForm #id_nom, #content .contact #contactForm #id_courriel{
+	width:250px;
+}
+
+#content .contact #contactForm #id_sujet{
+	width:725px;	
+}
+
+#content .contact #contactForm #id_textarea{
+	width:725px;
+	height:200px;
+}
+
 /******************** Footer ******************/
 body > footer {
 	width:100%; 
@@ -815,10 +866,11 @@ body > footer {
 nav.menu ul li{
     background: url("../img/marker1.png") no-repeat scroll 0 5px transparent;
     display: block;
-    line-height: 16px;
-    padding-bottom: 8px;
+    line-height: 20px;
+    padding-bottom: 15px;
     padding-left: 13px;
     font-size:17px !important;
+    width: 200px;
 }
 
 nav.menu ul li a {

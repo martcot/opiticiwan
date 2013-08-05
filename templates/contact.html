@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags crispy_forms_tags %}
+
+{% block headerclass %}content{% endblock %}
+
+{% block content %}
+            <div class="container_24 content_wrapper contact">
+            	<div class="wrapper">
+	            	<ul id="breadcrumb" class="clearfix">
+	            		{% show_breadcrumb %}
+	            	</ul>
+	            </div>
+                <div class="wrapper bloc1">
+                	<h3>Nous trouver</h3>
+                    <article class="grid_18">
+                        <iframe width="700" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ca/maps?ie=UTF8&amp;cid=2593687207979332204&amp;q=Conseil+des+Atikamekw+d'Opitciwan&amp;gl=CA&amp;hl=fr&amp;t=m&amp;iwloc=A&amp;ll=48.659001,-74.938688&amp;spn=0.006295,0.006295&amp;&output=embed&iwloc=near"></iframe>
+                    </article>
+                	<nav class="menu grid_6">
+                    	{% placeholder "location" %}
+                        <div class="clear"></div>
+                    </nav>
+                </div>
+                <div class="wrapper">
+                	<h3>Formulaire de contact</h3>
+		            {% if form.message %}
+		                <div class="alert alert-{{form.mtype}}">{{ form.message }}</div>
+		            {% endif %}
+		            {% crispy form %}
+                </div>
+            </div>
+{% endblock %}
