@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags i18n bootstrap_pagination thumbnail phototitle %}
+
+{% block headerclass %}content{% endblock %}
+{% if galerie %}{% block headtitle %}{{galerie.title}}{% endblock %}{% endif %}
+
+{% block content %}
+            <div class="container_24 content_wrapper photos">
+            	<div class="wrapper">
+	            	<ul id="breadcrumb" class="clearfix">
+	            		{% show_breadcrumb "galeries/breadcrumb.html" %}
+	            	</ul>
+	            </div>
+                <div class="wrapper">
+                	<nav class="menu grid_6">
+                    	{% include "galeries/menu.html" %}
+                        <div class="clear"></div>
+                    </nav>
+                    <div class="grid_18">
+                    	<h2>{% if not galerie %}{% trans "Photos" %}{% else %}{{galerie.title}}{% endif %}</h2>
+                    	
+                    	<div class="clearfix">
+	                        {% for photo in page_photos.object_list %}
+	                        
+	                        <article class="photo">
+		                        <a rel="group1" href="{{ MEDIA_URL }}{{ photo.photo }}">
+		                            {% thumbnail photo.photo "200x150" crop="center" as im %}
+		                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ photo.titre }}">
+		                            {% endthumbnail %}
+		                            <span>{% phototitle request.LANGUAGE_CODE photo.id %}</span>
+		                        </a>
+	                        </article>
+	                        
+	                        {% empty %}
+								{% trans "Aucune photo à afficher" %}
+							{% endfor %}
+						</div>
+						
+						{% bootstrap_paginate page_photos range=10 show_prev_next="true" show_first_last="true" %}
+                    </div>
+                </div>
+            </div>
+            {% addtoblock "css" %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.css">
+            {% endaddtoblock %}
+			{% addtoblock "js" %}
+			<script src="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+			<script>
+			    $(document).ready(function() {
+			        $("article.photo a").fancybox();
+			    });
+			</script>
+			{% endaddtoblock %}
+{% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^', include('news.urls')),
     url(r'^', include('polls.urls')),
     url(r'^ressources/galeries-photo/', include('galeries.urls')),
+    url(r'^ressources/documents/', include('documents.urls')),
     
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('tinymce.urls')),

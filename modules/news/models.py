@@ -15,6 +15,11 @@ class News(models.Model):
     content = HTMLField(verbose_name=_("Contenu de la nouvelle"))
     pub_date = models.DateTimeField(verbose_name=_("Date de publication"),default=datetime.datetime.now)
     
+    def __str__(self):
+        return "%s" % (self.title)
+    def __unicode__(self):
+        return u'%s' % (self.title)
+    
     class Meta:
         verbose_name = _("Nouvelle")
         verbose_name_plural = _("Nouvelles")

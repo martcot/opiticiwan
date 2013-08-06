@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from django.template import Context, loader
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import Context, Template, RequestContext
 from django.template.loader import render_to_string
 from django.shortcuts import render_to_response
@@ -30,7 +30,10 @@ def lastpoll(request):
 
 def vote(request,slug,id):
     
-    poll = Poll.objects.get(slug=slug)
+    try:
+        poll = Poll.objects.get(slug=slug)
+    except:
+        raise Http404
     
     session = request.session.get('voted_'+slug, False)
     if session:

@@ -1,0 +1,9 @@
+{% load cms_tags menu_tags sekizai_tags i18n %}
+
+<h4>{% trans "Galeries" %}</h4>
+<ul>
+	<li><a href="/ressources/galeries-photo/">Tout afficher</a></li>
+	{% for gallery in galeries %}
+	<li><a href="/ressources/galeries-photo/{{gallery.slug}}/">{{gallery.title}}</a></li>
+	{% endfor %}
+</ul>
