@@ -10,7 +10,26 @@ from documents.models import Document, Category
 
 #plugin_pool.get_plugin('TextPlugin').search_fulltext = True
 
+class PageIndex(indexes.SearchIndex):
+    text = indexes.CharField(document=True, use_template=True, model_attr='text')
+    title = indexes.CharField(model_attr='get_page_title')
+    get_slug = indexes.CharField(model_attr='get_slug')
 
+    def prepare_text(self,obj):
+        renderedplugins = ""
+        for i in obj.cmsplugin_set.all():
+            renderedplugins += i.render_plugin(context={})
+        return renderedplugins
+
+    def get_queryset(self):
+        qs = Page.objects.published().filter(publisher_is_draft=False).values('get_slug').distinct()
+        result_qs |= qs
+        return qs
+
+
+site.register(Page, PageIndex)
+
+############################################################################################################################
 
 class NewsIndex(indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
