@@ -16,7 +16,7 @@ def index(request):
         page = 1
     try:
         page_photos = paginator.page(page)
-    except (EmptyPage, InvalidPage):
+    except (InvalidPage):
         raise Http404
 
     return render_to_response('galeries/index.html', {"photos":photos, "galeries":galeries,"page_photos":page_photos,"page":page}, context_instance=RequestContext(request))
@@ -39,7 +39,7 @@ def galerie(request, slug):
 
     try:
         page_photos = paginator.page(page)
-    except (EmptyPage, InvalidPage):
+    except (InvalidPage):
         raise Http404
         
     return render_to_response('galeries/index.html', {"photos":photos, "galeries":galeries, "galerie":galerie, "page_photos":page_photos,"page":page}, context_instance=RequestContext(request))

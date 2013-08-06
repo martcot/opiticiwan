@@ -1,0 +1,10 @@
+<article class="new">
+	<header>
+		<a href="/nouvelles/{{instance.news.slug}}/"><h3>{{instance.news.title}}</h3></a>
+	</header>
+	<p>{{instance.news.short_content}}</p>
+	<footer>
+		<span>{% trans "Publié le :" %} {{instance.news.pub_date|date:"d F Y"}}</span>
+		<a class="link3" href="/nouvelles/{{instance.news.slug}}/">Lire la suite</a>
+	</footer>
+</article>

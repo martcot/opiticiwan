@@ -27,7 +27,7 @@ def news(request):
 
     try:
         page_news = paginator.page(page)
-    except (EmptyPage, InvalidPage):
+    except (InvalidPage):
         raise Http404
         
     return render_to_response('news/news.html', {"page_news":page_news,"page":page,"menu":menuvar}, context_instance=RequestContext(request))

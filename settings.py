@@ -135,6 +135,7 @@ CMS_TEMPLATES = (
 	("content.html",u"Contenu - menu gauche vide"),
     ("content_children.html",u"Contenu - menu enfants"),
     ("content_parent.html",u"Contenu - menu pages soeurs"),
+    ("app.html",u"Application"),
 )
 
 #CMS_APPHOOKS = (

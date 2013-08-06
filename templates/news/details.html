@@ -19,7 +19,7 @@
                     <article class="grid_18 detail">
                     	<header>
                     		<h2>{{new.title}}</h2>
-                    		<span>{% trans "Publié le :" %} {{new.pub_date}}</span>
+                    		<span>{% trans "Publié le :" %} {{new.pub_date|date:"d F Y"}}</span>
                     	</header>
                     	{{new.content|safe}}
                     </article>

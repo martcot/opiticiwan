@@ -1,0 +1,12 @@
+{% load cms_tags menu_tags sekizai_tags i18n docs_categories_list %}
+
+{% for cat in cats %}
+<li>
+	<a href="/ressources/documents/cat/{{cat.slug}}/">{{cat.title}}</a>
+	{% if cat.children %}
+	<ul>
+		{% docs_categories_list request cat.children %}
+	</ul>
+	{% endif %}
+</li>
+{% endfor %}

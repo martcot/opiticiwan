@@ -24,6 +24,9 @@
 				            {% for result in page.object_list %}
 				                <p>
 				                	{% if result.object|get_class == 'News' %}<a href="/nouvelles/{{ result.object.slug }}/">{{ result.object.title }}</a>
+				                	{% elif result.object|get_class == 'Gallery' %}<a href="/ressources/galeries-photo/{{ result.object.slug }}/">{{ result.object.title }}</a>
+				                	{% elif result.object|get_class == 'Document' %}<a href="/ressources/documents/doc/{{ result.object.slug }}/">{{ result.object.title }}</a>
+				                	{% elif result.object|get_class == 'Category' %}<a href="/ressources/documents/cat/{{ result.object.slug }}/">{{ result.object.title }}</a>
 				                	{% else %}<a href="{{ result.object.get_absolute_url }}">{{ result.object }}</a>{% endif %}
 				                </p>
 				            {% empty %}

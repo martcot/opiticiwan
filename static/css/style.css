@@ -777,7 +777,8 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #content .news .wrapper .grid_18 article.new p{
-	padding-bottom: 25px;
+	padding-bottom: 28px;
+	font-size: 107%;
 }
 
 #content .news .wrapper .grid_18 article.new footer span{
@@ -871,6 +872,47 @@ ul.sf-menu li li li.sfHover ul {
 
 #content #sondage ul{
 	margin: 0 0 25px 0;
+}
+
+#content .documents nav.menu ul ul li{
+	margin:8px 0 8px 8px;
+	padding:0 0 0 15px;
+}
+
+#content .documents .wrapper .grid_18 h2{ margin:0 0 34px; }
+
+#content .documents .wrapper .grid_18 article.document{
+	display:block;
+	padding:0 0 35px;
+	border-bottom:2px solid #c6b9a6;
+	margin-bottom:30px;
+}
+
+#content .documents .wrapper .grid_18 article.document p{
+	padding-bottom: 28px;
+	font-size: 107%;
+}
+
+#content .documents .wrapper .grid_18 article.document footer span{
+	font-style:italic;
+	float: left;
+}
+
+#content .documents .wrapper .grid_18 article.document a.link3{
+	float:right;
+}
+
+#content .documents header{
+	background:none;
+}
+
+#content .documents .wrapper .grid_18 article.document header a h3{
+	color:#f68c24;
+}
+
+#content .documents .wrapper .grid_18 article.document header a h3:hover,#content .documents .wrapper .grid_18 article.document header a:hover{
+	color:#323232;
+	text-decoration: none;
 }
 
 /******************** Footer ******************/

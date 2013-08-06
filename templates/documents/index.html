@@ -23,7 +23,14 @@
 	                        {% for doc in page_docs.object_list %}
 	                        
 	                        <article class="document">
-		                        <header><h3>{{doc.title}}</h3></header>
+		                        <header>
+		                        	<a href="/ressources/documents/doc/{{doc.slug}}/"><h3>{{doc.title}}</h3></a>
+		                        </header>
+	                        	{% if doc.short_content %}<p>{{doc.short_content}}</p>{% endif %}
+	                        	<footer>
+	                        		<span>{% trans "Publié le :" %} {{doc.pub_date|date:"d F Y"}}</span>
+	                        		<a class="link3" href="/ressources/documents/doc/{{doc.slug}}/">Télécharger</a>
+	                        	</footer>
 	                        </article>
 	                        
 	                        {% empty %}

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.timezone import localtime
+from cms.models import CMSPlugin
 from django.utils.translation import ugettext_lazy as _
 from autoslug import AutoSlugField
 from django.conf import settings
@@ -23,3 +24,9 @@ class News(models.Model):
     class Meta:
         verbose_name = _("Nouvelle")
         verbose_name_plural = _("Nouvelles")
+
+class NewsPlugin(CMSPlugin):
+    new = models.ForeignKey('News', related_name='plugins')
+
+    def __unicode__(self):
+      return self.new.title
