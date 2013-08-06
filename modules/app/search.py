@@ -2,12 +2,15 @@ import haystack
 import datetime
 from haystack import indexes
 from haystack import site
-from cms.plugin_pool import plugin_pool
+#from cms.plugin_pool import plugin_pool
+from cms.models import Page
 from news.models import News
 from galeries.models import Gallery
 from documents.models import Document, Category
 
-plugin_pool.get_plugin('TextPlugin').search_fulltext = True
+#plugin_pool.get_plugin('TextPlugin').search_fulltext = True
+
+
 
 class NewsIndex(indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)

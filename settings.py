@@ -200,7 +200,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'bootstrap-pagination',
     'haystack',
-    'cms_search',
+    #'cms_search',
 
     'app',
     'news',
