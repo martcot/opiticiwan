@@ -1014,3 +1014,9 @@ nav.menu ul li a:hover {
 	font-size:13px;
 	color:#000;
 }
+
+/* Grid system */
+
+.grid-container {
+    max-width: 960px;
+  }

@@ -5,11 +5,13 @@
   	<title>{% block headtitle %}{% endblock %}{% page_attribute page_title %} | Opiticiwan.ca</title>
   	<meta charset="utf-8">
     <meta name="description" content="{% page_attribute meta_description %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
     <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
 	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+	<!--<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">-->
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/unsemantic-grid-responsive.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
     {% render_block "css" %}
     
@@ -29,11 +31,11 @@
 	{% cms_toolbar %}
 <!--==============================header=================================-->
     <header class="clearfix {% block headerclass %}{% endblock %}">
-    	<div class="container_24">
-        	<article class="grid_10">
+    	<div class="grid-container">
+        	<article class="grid-40">
             	<h1><a class="logo" href="index.html">Conseil des Atikamekw d'Opitciwan</a></h1>
             </article>
-            <article class="grid_6 push_3">
+            <article class="grid-30 push_3">
             	<div class="head-box1 p6">
                 Rue Amisk, Opiticiwan<br />
 				Québec G0W 3B0<br />
@@ -41,7 +43,7 @@
 				F  819.974.8828</span>
                 </div>
             </article>
-            <article class="grid_5 push_3">
+            <article class="grid-30 push_3">
             	<div class="head-box2">
                 	<ul class="sbuttons">
                 		<li class="rss"><a>RSS</a></li>
@@ -70,7 +72,7 @@
 	<!--==============================content================================-->
 	<img src="{{ STATIC_URL }}img/content-bg.jpg" id="content_bg" />
     <section id="content">
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     </section>
 	<!--==============================footer=================================-->
     <footer>
