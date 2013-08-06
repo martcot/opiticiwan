@@ -204,6 +204,7 @@ INSTALLED_APPS = (
     'app',
     'news',
     'polls',
+    'galeries',
 )
 
 LOGGING = {
