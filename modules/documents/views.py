@@ -50,7 +50,7 @@ def cat(request,slug):
     except (InvalidPage):
         raise Http404
         
-    return render_to_response('documents/index.html', {"category":category, "page_docs":page_docs,"page":page,"menu":menuvar}, context_instance=RequestContext(request))
+    return render_to_response('documents/index.html', {"category":category, "page_docs":page_docs,"page":page,"menu":menuvar,"title":category.title}, context_instance=RequestContext(request))
 
 def menu(request):
     

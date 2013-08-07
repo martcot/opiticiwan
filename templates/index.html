@@ -15,20 +15,18 @@
 {% endblock %}
 {% block content %}
         	{% if news %}
-            <div class="p11 clearfix">
-                <article class="grid-100">
-                	<div class="page1-box1">
-                		{% for new in news %}
-                    	<div class="inner1 grid-25 maxheight">
-                        	<span class="text3">{{new.title}}</span>
-                            <p>{{new.short_content}}</p>
-                            <a class="link2" href="/nouvelles/{{new.slug}}/">{% trans "Lire la suite" %}</a>
-                        </div>
-                        {% endfor %}
+            <article class="p11 clearfix lastnews grid-100">
+            	<div class="page1-box1">
+            		{% for new in news %}
+                	<div class="inner1 grid-25 maxheight">
+                    	<span class="text3">{{new.title}}</span>
+                        <p>{{new.short_content}}</p>
+                        <a class="link2" href="/nouvelles/{{new.slug}}/">{% trans "Lire la suite" %}</a>
                     </div>
-                </article>
+                    {% endfor %}
+                </div>
                 <a class="news link3" href="/nouvelles/">Voir toutes les nouvelles</a>
-            </div>
+            </article>
             {% endif %}
         	<article class="grid-40 page1-box4">
         		{% placeholder "home_title1" %}

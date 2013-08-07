@@ -42,5 +42,5 @@ def galerie(request, slug):
     except (InvalidPage):
         raise Http404
         
-    return render_to_response('galeries/index.html', {"photos":photos, "galeries":galeries, "galerie":galerie, "page_photos":page_photos,"page":page}, context_instance=RequestContext(request))
+    return render_to_response('galeries/index.html', {"photos":photos, "galeries":galeries, "galerie":galerie, "page_photos":page_photos,"page":page,"title":galerie.title}, context_instance=RequestContext(request))
 	

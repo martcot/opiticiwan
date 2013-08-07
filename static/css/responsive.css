@@ -1,6 +1,76 @@
-/* Tablettes */
+.hide{display:none;}
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (max-width: 959px) {
+	
+	body > header .headerlogo{width:320px;}
+ 	body > header .location{display:none;}
+ 	body > header .searchAndIcons{
+ 		position: absolute;
+    	right: 0;
+    	top: 0;
+    }
+ 	body > header .main nav ul.sf-menu{display:none;}
+ 	body > header .main nav .sel-menu{
+ 		display:block;
+ 		width:250px;
+ 		text-align:center;
+ 		margin:0 auto;
+ 		padding:15px 0 8px;
+ 	}
+ 	body > header .head-line{width:100%;}
+ 	body > header .carousel-linked-nav{
+ 		left: 85%;
+ 	}
  	
+ 	body > footer .location{display:none;}
+ 	body > footer .footerlogo{width:40%;}
+ 	body > footer .menu{width:60%;}
+ 	footer nav.menu ul li{width:120px;}
  	
+	.grid-container{width:100%;margin:0;padding:0;}
+	#content{max-width: 959px;width:100%;}
+	#content .grid-container .lastnews{padding:0;}
+	#content .grid-container .lastnews .page1-box1 .inner1{width:100%;height:auto;}
+	#content .grid-container #breadcrumb{padding:20px;}
+	#content .contact .bloc1 h3{padding:0 10px;}
+	#content .contact .bloc1 article{
+		width:100%;
+	}
+	#content .contact .bloc1 .map #gm{
+		width:100%;
+		height:300px;
+	}
+	#content .contact .bloc1 .map{margin-bottom:25px;}
+	#content .contact .cform{width:100%;}
+}
+
+@media only screen and (max-width: 760px) {
+	
+	#content nav.menu ul li{width:100%;}
+	
+	body > footer .footerlogo{width:100%;margin-bottom:35px;}
+	body > footer .footerlogo .foot-page1{
+		margin: 0 auto;
+		width: 260px;
+		
+	}
+	body > footer .menu{width:100%;}
+	
+}
+
+@media only screen and (max-width: 550px) {
+	
+	body > header .searchAndIcons form.search{display:none;}
+	#content .photos article.photo{width:100%;}
+}
+
+@media only screen and (max-width: 420px) {
+	
+	body > header .headerlogo{margin:0 auto;}
+	body > header .headerlogo h1{margin:0 auto;}
+	body > header .searchAndIcons {position:relative;margin:10px auto 0;width: 110px;}
+	body > header .searchAndIcons .head-box2{padding-top:0;}
+	
+	#content .contact #contactForm #div_id_nom, #content .contact #contactForm #div_id_courriel{width:100%;}
+	#content .contact #contactForm #id_nom, #content .contact #contactForm #id_courriel{width:100%;}
 }

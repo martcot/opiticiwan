@@ -3,7 +3,6 @@
 
 {% block headerclass %}content{% endblock %}
 {% block contentclass %}photos{% endblock %}
-{% if galerie %}{% block headtitle %}{{galerie.title}}{% endblock %}{% endif %}
 
 {% block content %}
         	<ul id="breadcrumb" class="grid-100 clearfix">
@@ -18,7 +17,7 @@
             	<div class="clearfix">
                     {% for photo in page_photos.object_list %}
                     
-                    <article class="photo">
+                    <article class="photo grid-33">
                         <a rel="group1" href="{{ MEDIA_URL }}{{ photo.photo }}">
                             {% thumbnail photo.photo "200x150" crop="center" as im %}
                                 <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ photo.titre }}">

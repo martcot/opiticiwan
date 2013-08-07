@@ -168,6 +168,11 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SEARCH_ENGINE = 'simple'
 HAYSTACK_SITECONF = 'app.search'
 
+COMPRESS_ENABLED = True
+COMPRESS_URL = '/static/'
+COMPRESS_ROOT = os.path.join(PROJECT_PATH, "static")
+COMPRESS_OUTPUT_DIR = 'compress'
+
 INSTALLED_APPS = (
     'admin_tools',
     'admin_tools.theming',

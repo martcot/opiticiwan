@@ -41,7 +41,7 @@ def new(request,slug):
     
     menuvar = menu(request)
     
-    return render_to_response('news/details.html', {"new":new,"menu":menuvar}, context_instance=RequestContext(request))
+    return render_to_response('news/details.html', {"new":new,"menu":menuvar,"title":new.title}, context_instance=RequestContext(request))
 
 def menu(request):
     

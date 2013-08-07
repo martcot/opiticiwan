@@ -2,12 +2,14 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
+from news.feeds import LatestEntriesFeed
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^', include('app.urls')),
     url(r'^', include('polls.urls')),
+    url(r'^rss/$', LatestEntriesFeed(), name="rss_feed"),
     
     (r'^admin/', include(admin.site.urls)),
     (r'^tinymce/', include('tinymce.urls')),
