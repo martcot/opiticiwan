@@ -6,51 +6,44 @@
 {% block search_q %}{% if not query == None %}{{ query }}{% endif %}{% endblock %}
 
 {% block content %}
-            <div class="container_24 content_wrapper">
-            	<div class="wrapper">
-	            	<ul id="breadcrumb" class="clearfix">
-	            		{% show_breadcrumb "search/breadcrumb.html" %}
-	            	</ul>
-	            </div>
-                <div class="wrapper">
-                	<nav class="menu grid_6">
-                		{{ request|lastnews }}
-                        <div class="clear"></div>
-                    </nav>
-                    <article class="grid_18 search">
-			            <h3>{% trans "Résultats de la recherche" %} : {% if not query == None %}{{ query }}{% endif %}</h3>
-						{% if not query == None %}
-						
-				            {% for result in page.object_list %}
-				                <p>
-				                	{% if result.object|get_class == 'News' %}<a href="/nouvelles/{{ result.object.slug }}/">{{ result.object.title }}</a>
-				                	{% elif result.object|get_class == 'Gallery' %}<a href="/ressources/galeries-photo/{{ result.object.slug }}/">{{ result.object.title }}</a>
-				                	{% elif result.object|get_class == 'Document' %}<a href="/ressources/documents/doc/{{ result.object.slug }}/">{{ result.object.title }}</a>
-				                	{% elif result.object|get_class == 'Category' %}<a href="/ressources/documents/cat/{{ result.object.slug }}/">{{ result.object.title }}</a>
-				                	{% else %}<a href="{{ result.object.get_absolute_url }}">{{ result.object }}</a>{% endif %}
-				                </p>
-				            {% empty %}
-				                <p>{% trans "Aucun résultats correspondant." %}</p>
-				            {% endfor %}
-				            
-							<div class="pagination  pagination-centered ">    
-							    <ul>    
-							        <li {% if not page.has_previous %}class="disabled"{% endif %}>
-							            <a href="{% if not page.has_previous %}#{% else %}?q={{query}}&page={{page.previous_page_number}}{% endif %}">&larr;</a>
-							        </li>
-							            <li class="active">
-							                <a href="#">{{page.number}}</a>
-							            </li>          
-							        <li {% if not page.has_next %}class="disabled"{% endif %}>
-							            <a href="{% if not page.has_next %}#{% else %}?q={{query}}&page={{page.next_page_number}}{% endif %}">&rarr;</a>
-							        </li>     
-							    </ul> 
-							</div>     
-				                  
-			            {% else %} 
-			                <p>{% trans "Veuillez taper des mots-clés pour effectuer la recherche." %}</p>
-			            {% endif %}            
-                    </article>
-                </div>
-            </div>
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb "search/breadcrumb.html" %}
+        	</ul>
+        	<nav class="menu grid-25">
+        		{{ request|lastnews }}
+            </nav>
+            <article class="grid-75 search">
+	            <h3>{% trans "Résultats de la recherche" %} : {% if not query == None %}{{ query }}{% endif %}</h3>
+				{% if not query == None %}
+				
+		            {% for result in page.object_list %}
+		                <p>
+		                	{% if result.object|get_class == 'News' %}<a href="/nouvelles/{{ result.object.slug }}/">{{ result.object.title }}</a>
+		                	{% elif result.object|get_class == 'Gallery' %}<a href="/ressources/galeries-photo/{{ result.object.slug }}/">{{ result.object.title }}</a>
+		                	{% elif result.object|get_class == 'Document' %}<a href="/ressources/documents/doc/{{ result.object.slug }}/">{{ result.object.title }}</a>
+		                	{% elif result.object|get_class == 'Category' %}<a href="/ressources/documents/cat/{{ result.object.slug }}/">{{ result.object.title }}</a>
+		                	{% else %}<a href="{{ result.object.get_absolute_url }}">{{ result.object }}</a>{% endif %}
+		                </p>
+		            {% empty %}
+		                <p>{% trans "Aucun résultats correspondant." %}</p>
+		            {% endfor %}
+		            
+					<div class="pagination  pagination-centered">    
+					    <ul>    
+					        <li {% if not page.has_previous %}class="disabled"{% endif %}>
+					            <a href="{% if not page.has_previous %}#{% else %}?q={{query}}&page={{page.previous_page_number}}{% endif %}">&larr;</a>
+					        </li>
+					            <li class="active">
+					                <a href="#">{{page.number}}</a>
+					            </li>          
+					        <li {% if not page.has_next %}class="disabled"{% endif %}>
+					            <a href="{% if not page.has_next %}#{% else %}?q={{query}}&page={{page.next_page_number}}{% endif %}">&rarr;</a>
+					        </li>     
+					    </ul> 
+					</div>     
+		                  
+	            {% else %} 
+	                <p>{% trans "Veuillez taper des mots-clés pour effectuer la recherche." %}</p>
+	            {% endif %}            
+            </article>
 {% endblock %}

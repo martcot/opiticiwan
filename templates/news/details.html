@@ -2,27 +2,21 @@
 {% load cms_tags menu_tags sekizai_tags i18n bootstrap_pagination %}
 
 {% block headerclass %}content{% endblock %}
+{% block contentclass %}news{% endblock %}
 {% block headtitle %}{{new.title}}{% endblock %}
 
 {% block content %}
-            <div class="container_24 content_wrapper news">
-            	<div class="wrapper">
-	            	<ul id="breadcrumb" class="clearfix">
-	            		{% show_breadcrumb "news/breadcrumb.html" %}
-	            	</ul>
-	            </div>
-                <div class="wrapper">
-                	<nav class="menu grid_6">
-                    	{% include "news/menu.html" %}
-                        <div class="clear"></div>
-                    </nav>
-                    <article class="grid_18 detail">
-                    	<header>
-                    		<h2>{{new.title}}</h2>
-                    		<span>{% trans "Publié le :" %} {{new.pub_date|date:"d F Y"}}</span>
-                    	</header>
-                    	{{new.content|safe}}
-                    </article>
-                </div>
-            </div>
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb "news/breadcrumb.html" %}
+        	</ul>
+        	<nav class="menu grid-25">
+            	{% include "news/menu.html" %}
+            </nav>
+            <article class="grid-75 detail">
+            	<header>
+            		<h2>{{new.title}}</h2>
+            		<span>{% trans "Publié le :" %} {{new.pub_date|date:"d F Y"}}</span>
+            	</header>
+            	{{new.content|safe}}
+            </article>
 {% endblock %}

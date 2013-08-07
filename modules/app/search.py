@@ -2,30 +2,27 @@ import haystack
 import datetime
 from haystack import indexes
 from haystack import site
-#from cms.plugin_pool import plugin_pool
+from cms.plugin_pool import plugin_pool
 from cms.models import Page
 from news.models import News
 from galeries.models import Gallery
 from documents.models import Document, Category
 
 #plugin_pool.get_plugin('TextPlugin').search_fulltext = True
+#plugin_pool.get_plugin('TextPlugin').search_fields = ["placeholders.all",]
 
 class PageIndex(indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True, model_attr='text')
     title = indexes.CharField(model_attr='get_page_title')
     get_slug = indexes.CharField(model_attr='get_slug')
+    get_meta_description = indexes.CharField(model_attr='get_meta_description')
 
-    def prepare_text(self,obj):
-        renderedplugins = ""
-        for i in obj.cmsplugin_set.all():
-            renderedplugins += i.render_plugin(context={})
-        return renderedplugins
-
-    def get_queryset(self):
-        qs = Page.objects.published().filter(publisher_is_draft=False).values('get_slug').distinct()
-        result_qs |= qs
-        return qs
-
+    def get_model(self):
+        return Page
+    
+    def index_queryset(self, using=None):
+        """Used when the entire index for model is updated."""
+        return self.get_model().objects.published().filter(publisher_is_draft=False).distinct()
 
 site.register(Page, PageIndex)
 

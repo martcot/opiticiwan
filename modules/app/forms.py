@@ -38,7 +38,7 @@ class ContactForm(forms.Form):
         
         self.helper = FormHelper()
         self.helper.form_id = 'contactForm'
-        self.helper.form_class = 'grid_24'
+        self.helper.form_class = 'grid-100'
         self.helper.form_method = 'post'
         self.helper.form_action = '#contactForm'
 

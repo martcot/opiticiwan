@@ -1,5 +1,4 @@
-{% load cms_tags sekizai_tags menu_tags placeholder_tags compress i18n %}
-<!DOCTYPE html>
+{% load cms_tags sekizai_tags menu_tags placeholder_tags compress i18n %}<!DOCTYPE html>
 <html lang="fr">
 <head>
   	<title>{% block headtitle %}{% endblock %}{% page_attribute page_title %} | Opiticiwan.ca</title>
@@ -10,9 +9,9 @@
 	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
-	<!--<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">-->
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/unsemantic-grid-responsive.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/responsive.css">
     {% render_block "css" %}
     
 <!--[if lt IE 8]>
@@ -29,11 +28,10 @@
 </head>
 <body>
 	{% cms_toolbar %}
-<!--==============================header=================================-->
     <header class="clearfix {% block headerclass %}{% endblock %}">
     	<div class="grid-container">
         	<article class="grid-40">
-            	<h1><a class="logo" href="index.html">Conseil des Atikamekw d'Opitciwan</a></h1>
+            	<h1><a class="logo" href="/">Conseil des Atikamekw d'Opitciwan</a></h1>
             </article>
             <article class="grid-30 push_3">
             	<div class="head-box1 p6">
@@ -69,37 +67,37 @@
         	</nav>
         </div>
     </header>
-	<!--==============================content================================-->
+
 	<img src="{{ STATIC_URL }}img/content-bg.jpg" id="content_bg" />
     <section id="content">
+    	<div class="grid-container {% block contentclass %}{% endblock %}">
     {% block content %}{% endblock %}
+    	</div>
     </section>
-	<!--==============================footer=================================-->
+
     <footer>
-        <div class="container_24">
-        	<div class="wrapper">
-            	<article class="grid_8">
-                	<div class="foot-page1">
-                		<figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
-                    	<span>© 2013 | Tout droit réservé<br/>Conception | D-Modules</span>
-                    	<div class="clear"></div>
-                	</div>
-                </article>
-                <article class="grid_10">
-                	<ul class="list2">
-                        {% show_menu 0 0 0 0 %}
-                    </ul>
-                </article>
-                <article class="grid_6">
-					<div class="foot-page2">
-						<span class="title">{% trans "Pour nous joindre" %}</span><br/>
-						<span class="name">Conseil des Atikamec d’Opticiwan</span><br/>
-						22 rue Amisk, Opticiwan<br/>
-						(Québec)  G0W 3B0<br/>
-						T /819-974-8837  F / 819 974-8828
-					</div>
-                </article>
-            </div>        
+        <div class="grid-container">
+        	<article class="grid-35">
+            	<div class="foot-page1">
+            		<figure class="foot-img"><img src="{{ STATIC_URL }}img/foot-logo.png" alt=""></figure>
+                	<span>© 2013 | Tout droit réservé<br/>Conception | D-Modules</span>
+                	<div class="clear"></div>
+            	</div>
+            </article>
+            <article class="grid-40">
+            	<ul class="list2">
+                    {% show_menu 0 0 0 0 %}
+                </ul>
+            </article>
+            <article class="grid-24">
+				<div class="foot-page2">
+					<span class="title">{% trans "Pour nous joindre" %}</span><br/>
+					<span class="name">Conseil des Atikamec d’Opticiwan</span><br/>
+					22 rue Amisk, Opticiwan<br/>
+					(Québec)  G0W 3B0<br/>
+					T /819-974-8837  F / 819 974-8828
+				</div>
+            </article>     
         </div>
     </footer>
     

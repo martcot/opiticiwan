@@ -4,22 +4,15 @@
 {% block headerclass %}content{% endblock %}
 
 {% block content %}
-            <div class="container_24 content_wrapper">
-            	<div class="wrapper">
-	            	<ul id="breadcrumb" class="clearfix">
-	            		{% show_breadcrumb %}
-	            	</ul>
-	            </div>
-                <div class="wrapper">
-                	<nav class="menu grid_6">
-						<ul>
-							{% show_sub_menu 1 %}
-						</ul>
-                        <div class="clear"></div>
-                    </nav>
-                    <article class="grid_18">
-                        {% placeholder "content" %}
-                    </article>
-                </div>
-            </div>
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb %}
+        	</ul>
+            <nav class="menu grid-25">
+				<ul>
+					{% show_sub_menu 1 %}
+				</ul>
+            </nav>
+            <article class="grid-75">
+                {% placeholder "content" %}
+            </article>
 {% endblock %}

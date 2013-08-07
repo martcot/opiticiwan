@@ -2,44 +2,38 @@
 {% load cms_tags menu_tags sekizai_tags i18n bootstrap_pagination thumbnail phototitle %}
 
 {% block headerclass %}content{% endblock %}
+{% block contentclass %}documents{% endblock %}
 {% if category %}{% block headtitle %}{{category.title}}{% endblock %}{% endif %}
 
 {% block content %}
-            <div class="container_24 content_wrapper documents">
-            	<div class="wrapper">
-	            	<ul id="breadcrumb" class="clearfix">
-	            		{% show_breadcrumb "documents/breadcrumb.html" %}
-	            	</ul>
-	            </div>
-                <div class="wrapper">
-                	<nav class="menu grid_6">
-                    	{% include "documents/menu.html" %}
-                        <div class="clear"></div>
-                    </nav>
-                    <div class="grid_18">
-                    	<h2>{% if not category %}{% trans "Documents" %}{% else %}{{category.title}}{% endif %}</h2>
-                    	
-                    	<div class="clearfix">
-	                        {% for doc in page_docs.object_list %}
-	                        
-	                        <article class="document">
-		                        <header>
-		                        	<a href="/ressources/documents/doc/{{doc.slug}}/"><h3>{{doc.title}}</h3></a>
-		                        </header>
-	                        	{% if doc.short_content %}<p>{{doc.short_content}}</p>{% endif %}
-	                        	<footer>
-	                        		<span>{% trans "Publié le :" %} {{doc.pub_date|date:"d F Y"}}</span>
-	                        		<a class="link3" href="/ressources/documents/doc/{{doc.slug}}/">Télécharger</a>
-	                        	</footer>
-	                        </article>
-	                        
-	                        {% empty %}
-								{% trans "Aucun document à afficher" %}
-							{% endfor %}
-						</div>
-						
-						{% bootstrap_paginate page_docs range=10 show_prev_next="true" show_first_last="true" %}
-                    </div>
-                </div>
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb "documents/breadcrumb.html" %}
+        	</ul>
+        	<nav class="menu grid-25">
+            	{% include "documents/menu.html" %}
+            </nav>
+            <div class="grid-75">
+            	<h2>{% if not category %}{% trans "Documents" %}{% else %}{{category.title}}{% endif %}</h2>
+            	
+            	<div class="clearfix">
+                    {% for doc in page_docs.object_list %}
+                    
+                    <article class="document">
+                        <header>
+                        	<a href="/ressources/documents/doc/{{doc.slug}}/"><h3>{{doc.title}}</h3></a>
+                        </header>
+                    	{% if doc.short_content %}<p>{{doc.short_content}}</p>{% endif %}
+                    	<footer>
+                    		<span>{% trans "Publié le :" %} {{doc.pub_date|date:"d F Y"}}</span>
+                    		<a class="link3" href="/ressources/documents/doc/{{doc.slug}}/">Télécharger</a>
+                    	</footer>
+                    </article>
+                    
+                    {% empty %}
+						{% trans "Aucun document à afficher" %}
+					{% endfor %}
+				</div>
+				
+				{% bootstrap_paginate page_docs range=10 show_prev_next="true" show_first_last="true" %}
             </div>
 {% endblock %}

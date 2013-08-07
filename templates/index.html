@@ -14,50 +14,41 @@
 			</ol>
 {% endblock %}
 {% block content %}
-            <div class="container_24">
-            	{% if news %}
-                <div class="wrapper p11">
-                    <article class="grid_24">
-                    	<div class="page1-box1">
-                    		{% for new in news %}
-                        	<div class="inner1 maxheight {% if forloop.last %}last4{% endif %}">
-                            	<span class="text3">{{new.title}}</span>
-                                <p>{{new.short_content}}</p>
-                                <a class="link2" href="/nouvelles/{{new.slug}}/">{% trans "Lire la suite" %}</a>
-                            </div>
-                            {% endfor %}
+        	{% if news %}
+            <div class="p11 clearfix">
+                <article class="grid-100">
+                	<div class="page1-box1">
+                		{% for new in news %}
+                    	<div class="inner1 grid-25 maxheight">
+                        	<span class="text3">{{new.title}}</span>
+                            <p>{{new.short_content}}</p>
+                            <a class="link2" href="/nouvelles/{{new.slug}}/">{% trans "Lire la suite" %}</a>
                         </div>
-                    </article>
-                    <a class="news link3" href="/nouvelles/">Voir toutes les nouvelles</a>
-                </div>
-                {% endif %}
-                <div class="wrapper">
-                	<article class="grid_10">
-                		<div class="page1-box4">
-	                		{% placeholder "home_title1" %}
-	                        <article class="grid_6 alpha">
-								{% placeholder "home_content1" %}
-	                        </article>
-	                        <article class="grid_3">
-	                            {% placeholder "home_content_left1" %}
-	                        </article>
-	                        <div class="clear"></div>
-	                	</div>
-                    </article>
-                    <article class="grid_8">
-                        <div class="page1-box2">
-							{% placeholder "home_content2" %}
-                        </div>
-                    </article>
-                    <article class="grid_5 push_1">
-{{poll|safe}}
-                        <div class="banner1">
-                        	<span>{% trans "Suivez-nous" %}</span>
-                            <strong>{% trans "Par courriel" %}</strong>
-                        </div>
-                    </article>
-                </div>
+                        {% endfor %}
+                    </div>
+                </article>
+                <a class="news link3" href="/nouvelles/">Voir toutes les nouvelles</a>
             </div>
+            {% endif %}
+        	<article class="grid-40 page1-box4">
+        		{% placeholder "home_title1" %}
+                <article class="grid-60">
+					{% placeholder "home_content1" %}
+                </article>
+                <article class="grid-40">
+                    {% placeholder "home_content_left1" %}
+                </article>
+            </article>
+            <article class="grid-35 page1-box2">
+				{% placeholder "home_content2" %}
+            </article>
+            <article class="grid-25">
+{{poll|safe}}
+                    <div class="banner1">
+                	<span>{% trans "Suivez-nous" %}</span>
+                    <strong>{% trans "Par courriel" %}</strong>
+                </div>
+            </article>
 {% endblock %}
 {% addtoblock "js" %}
     <script>
