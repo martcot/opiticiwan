@@ -47,9 +47,13 @@
                     <strong>{% trans "Par courriel" %}</strong>
                 </a>
                 <div class="hide">
-	                <form id="emailSubscription">
+	                <div id="emailSubscription" class="grid-100">
 	                	<h3>{% trans "Inscription aux infolettres" %}</h3>
-	                </form>
+			            {% if emailform.message %}
+			                <div class="alert alert-{{emailform.mtype}}">{{ emailform.message }}</div>
+			            {% endif %}
+	                	{% crispy emailform %}
+	                </div>
                 </div>
             </article>
 {% addtoblock "css" %}
@@ -72,6 +76,11 @@
 		    $('.carousel-linked-nav li:eq(' + idx + ')').addClass('active');
 		});
 		$("#emailSubscription_open").fancybox();
+		{% if emailform.message %}
+		$(document).ready(function() {
+        	$("#emailSubscription_open").fancybox().trigger('click');
+    	});
+    	{% endif %}
     </script>
 {% endaddtoblock %}
 {% endblock %}

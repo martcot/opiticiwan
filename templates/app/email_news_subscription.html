@@ -1,0 +1,56 @@
+{% load i18n %}
+<table cellspacing="0" cellpadding="0" border="0" style="width:600px;">
+	<tr>
+		<td style="text-align:center;">
+			<img src="http://{{host}}/static/img/logo.png" alt="{{host}}"/>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+			<h1 style="color:#F68C24;margin-bottom:0;font-size:18px;">{% trans "Dernières nouvelles du site d'Opiticiwan.ca" %}</h1>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<em>{{ date|date:"d F Y" }}</em>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+	{% for new in news %}
+	<tr>
+		<td><a style="color:#F68C24;text-decoration:none;" href="http://{{host}}/nouvelles/{{new.slug}}/" target="_blank"><h2 style="margin-bottom:15px;font-size:15px;">{{new.title}}</h2></a></td>
+	</tr>
+	<tr>
+		<td>{{new.short_content}}</td>
+	</tr>
+	<tr>
+		<td style="text-align:right;padding-top:10px;"><a style="color:#F68C24;text-decoration:none;" href="http://{{host}}/nouvelles/{{new.slug}}/" target="_blank">{% trans "Lire la suite" %}</a></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><hr/></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td>
+			{% trans "Vous recevez cette infolettre car vous y êtes abonnés au nom de : " %}<em>{{subscription.name}}</em><br/><br/>
+			<em>{% trans "Pour vous déinscrire de la liste d'envoit, visitez ce lien" %}</em> : <a href="http://{{host}}/infolettre/desinscription/{{subscription.guid}}/" target="_blank">http://{{host}}/infolettre/desinscription/{{subscription.guid}}/</a>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+</table>
