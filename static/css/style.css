@@ -109,16 +109,16 @@ p {
 }
 
 .btn-orange {
-    background-color: #F68C24;
-    background-image: -moz-linear-gradient(center top , #F68C24, #F56F02);
-    background-repeat: repeat-x;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #F68C24 !important;
+    background-image: -moz-linear-gradient(center top , #F68C24, #F56F02) !important;
+    background-repeat: repeat-x !important;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25) !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
 }
 .btn-orange:hover, .btn-orange:active, .btn-orange.active, .btn-orange.disabled, .btn-orange[disabled] {
-    background-color: #F56F02;
-    color: #FFFFFF;
+    background-color: #F56F02 !important;
+    color: #FFFFFF !important;
 }
 .btn-orange:active, .btn-orange.active {
 }
@@ -381,22 +381,23 @@ nav ul {
 	margin-top:2px;
 }
 
-.p13 .sf-menu li {
+.p13 .sf-menu li.mainmenu {
 	padding-bottom:2px;
 }
 .sf-menu {
 	line-height:	1.0;
 }
-.sf-menu li {
+.sf-menu li.mainmenu {
 	float:			left;
 	width:156px;
 	text-align:center;
 	position:		relative;
 	padding-bottom:3px;
 }
-.sf-menu li:last-child{
+.sf-menu li.mainmenu:last-child{
 	padding-right: 4px;
 }
+
 .sf-menu a {
 	display:		block;
 	color:#fff !important;
@@ -409,23 +410,24 @@ nav ul {
 	transition: all 0.4s ease 0s;
 	position:		relative;
 }
-
 .sf-menu a:hover{text-decoration:none;width:100%;}
 
-.sf-menu li:hover,
-.sf-menu li.selected,
-.sf-menu li.sfHover > a {
+.sf-menu li.mainmenu:hover,
+.sf-menu li.mainmenu.selected,
+.sf-menu li.mainmenu.sfHover > a {
 	background:#284564;
 	text-decoration:none;
 }
 
-.sf-menu ul a:hover,
-.sf-menu ul li.sfHover > a {
+.sf-menu ul li.submenu a:hover,
+.sf-menu ul li.submenu.sfHover > a {
 	background:#e4814b;
 }
 
-.sf-menu ul ul a:hover,
-.sf-menu ul ul li.sfHover > a {
+.sf-menu ul li.submenu a{width:250px !important;}
+
+.sf-menu ul ul li.submenu a:hover,
+.sf-menu ul ul li.submenu.sfHover > a {
 	background:#3e6a99;
 }
 
@@ -438,7 +440,6 @@ nav ul {
 	padding:27px 0 28px;
     position: absolute;
     top: -999em;
-    width: 266px;
     z-index: 9999;
 }
 
@@ -448,12 +449,16 @@ nav ul {
 	overflow:hidden;
 }
 
-.sf-menu ul li {
-	width:234px !important;
+.sf-menu ul.submenu{
+	width:282px !important;
+	padding:20px 0 10px !important;
+}
+
+.sf-menu ul li.submenu {
 	text-align:left;
 }
-.sf-menu ul a {
-	padding:3px 0 3px 32px;
+.sf-menu ul li.submenu a {
+	padding:10px 0 10px 32px;
 }
 .sf-menu ul ul a {
 	padding:3px 0 3px 44px;

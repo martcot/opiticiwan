@@ -1,7 +1,6 @@
 {% load menu_tags menu_children %}
 {% for child in children %}
-{% if forloop.counter <= 6 %}
-<li class="mainmenu {% if child.selected %}selected{% endif %}{% if child.ancestor %}ancestor{% endif %}{% if child.sibling %}sibling{% endif %}{% if child.descendant %}descendant{% endif %}">
+<li class="submenu {% if child.selected %}selected{% endif %}{% if child.ancestor %}ancestor{% endif %}{% if child.sibling %}sibling{% endif %}{% if child.descendant %}descendant{% endif %}">
 <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
 {% if child.children %}
 	<ul class="submenu">
@@ -9,5 +8,4 @@
 	</ul>
 {% endif %}
 </li>
-{% endif %}
 {% endfor %}
