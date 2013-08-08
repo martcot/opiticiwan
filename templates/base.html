@@ -19,7 +19,7 @@
     {% render_block "css" %}
 	<!--[if lt IE 9]>
 	<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/ie.css">
+    <script src="{{ STATIC_URL }}js/respond.min.js"></script>
 	<![endif]-->
 </head>
 <body>
@@ -105,7 +105,6 @@
     <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
     <script src="{{ STATIC_URL }}js/superfish.js"></script>
-    <script src="{{ STATIC_URL }}js/respond.min.js"></script>
     <script>
 		$("header nav .sel-menu select").change(function() {
 		  window.location = $(this).find("option:selected").val();

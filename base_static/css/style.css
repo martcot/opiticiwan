@@ -1062,5 +1062,5 @@ footer nav.menu ul li {
 /* Grid system */
 
 .grid-container {
-    max-width: 960px;
-  }
+    max-width: 960px !important;
+}
