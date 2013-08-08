@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags sekizai_tags i18n %}
+{% load cms_tags sekizai_tags i18n crispy_forms_tags %}
 
 {% block slideshow %}
 			<div id="myCarousel" class="carousel slide carousel-fade">
@@ -42,13 +42,25 @@
             </article>
             <article class="grid-25">
 {{poll|safe}}
-                    <div class="banner1">
+                <a href="#emailSubscription" id="emailSubscription_open" class="banner1">
                 	<span>{% trans "Suivez-nous" %}</span>
                     <strong>{% trans "Par courriel" %}</strong>
+                </a>
+                <div class="hide">
+	                <div id="emailSubscription" class="grid-100">
+	                	<h3>{% trans "Inscription aux infolettres" %}</h3>
+			            {% if emailform.message %}
+			                <div class="alert alert-{{emailform.mtype}}">{{ emailform.message }}</div>
+			            {% endif %}
+	                	{% crispy emailform %}
+	                </div>
                 </div>
             </article>
-{% endblock %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.css">
+{% endaddtoblock %}
 {% addtoblock "js" %}
+	<script src="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <script>
 		$('#myCarousel').carousel();
 		$('.carousel-linked-nav > li > a').click(function() {
@@ -63,5 +75,12 @@
 		    var idx = $('#myCarousel .item.active').index();
 		    $('.carousel-linked-nav li:eq(' + idx + ')').addClass('active');
 		});
+		$("#emailSubscription_open").fancybox();
+		{% if emailform.message %}
+		$(document).ready(function() {
+        	$("#emailSubscription_open").fancybox().trigger('click');
+    	});
+    	{% endif %}
     </script>
 {% endaddtoblock %}
+{% endblock %}

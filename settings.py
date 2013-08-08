@@ -10,9 +10,7 @@ sys.path.append(os.path.join(PROJECT_PATH, "modules"))
 try:
     from local_settings import *
 except ImportError:
-    pass 
-
-SEND_EMAILS_TO = "droberge@d-modules.com"
+    pass
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
