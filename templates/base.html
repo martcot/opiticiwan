@@ -8,18 +8,18 @@
     <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">    
 	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
     <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
-	<!--[if lt IE 9]>
-	<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css">
     {% compress css %}
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css">
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/forms.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/grid.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/responsive.css">
     {% endcompress %}
     {% render_block "css" %}
+	<!--[if lt IE 9]>
+	<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+	<![endif]-->
 </head>
 <body>
 	{% cms_toolbar %}
@@ -104,6 +104,7 @@
     <script src="{{ STATIC_URL }}js/jquery.equalheights.js"></script>
     <script src="{{ STATIC_URL }}js/jquery.easing.1.3.js"></script>
     <script src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script src="{{ STATIC_URL }}js/respond.min.js"></script>
     <script>
 		$("header nav .sel-menu select").change(function() {
 		  window.location = $(this).find("option:selected").val();
