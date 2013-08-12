@@ -1,6 +1,6 @@
 {% load i18n %}
 {% for ance in ancestors %}
-<li>{% if not forloop.last or category or page > 1 %}<a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a> &raquo; {% else %}{{ ance.get_menu_title }}{% endif %}</li>
+<li>{% if not forloop.last or category or page > 1 %}<a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a> > {% else %}{{ ance.get_menu_title }}{% endif %}</li>
 {% endfor %}
-{% if category %}<li>{% if page > 1 %}<a href="/ressources/documents/{{ category.slug }}/">{{category.title}}</a> &raquo; {% else %}{{category.title}}{% endif %}</li>{% endif %}
+{% if category %}<li>{% if page > 1 %}<a href="/ressources/documents/{{ category.slug }}/">{{category.title}}</a> > {% else %}{{category.title}}{% endif %}</li>{% endif %}
 {% if page > 1 %}<li>{% trans "Page" %} {{page}}</li>{% endif %}

@@ -8,6 +8,7 @@
  		position: absolute;
     	right: 0;
     	top: 0;
+    	float:none !important;
     }
  	body > header .main nav ul.sf-menu{display:none;}
  	body > header .main nav .sel-menu{
@@ -21,6 +22,7 @@
  	body > header .carousel-linked-nav{
  		left: 85%;
  	}
+ 	div.carousel-message{display:none;}
  	
  	body > footer .location{display:none;}
  	body > footer .footerlogo{width:40%;}
@@ -42,14 +44,7 @@
 	}
 	#content .contact .bloc1 .map{margin-bottom:25px;}
 	#content .contact .cform{width:100%;}
-        #content .page1-box1 .inner1{
-                width:100% !important;
-        }
-        #content .page1-box1{
-                margin:0 !important;
-                padding:0 !important;
-        }
-
+	#content .page1-box4 img{padding-top:0;}
 }
 
 @media only screen and (max-width: 760px) {
@@ -76,7 +71,7 @@
 	
 	body > header .headerlogo{margin:0 auto;}
 	body > header .headerlogo h1{margin:0 auto;}
-	body > header .searchAndIcons {position:relative;margin:10px auto 0;width: 110px;}
+	body > header .searchAndIcons {position:relative;margin:10px auto 0;width: 120px;}
 	body > header .searchAndIcons .head-box2{padding-top:0;}
 	
 	#content .contact #contactForm #div_id_nom, #content .contact #contactForm #div_id_courriel{width:100%;}

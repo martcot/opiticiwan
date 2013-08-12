@@ -1,5 +1,6 @@
 body{
 	background:#f6f6f6;
+	color:#4e4537;
 	font:13px/18px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	position:relative;
 }
@@ -96,6 +97,32 @@ p {
 	height:100%;
 	display:block;
 	text-indent:-999999px;
+}
+
+div.carousel-message{
+    color: #FFFFFF;
+    font-family: 'Over the Rainbow',cursive;
+    font-size: 410%;
+    width:100%;
+    margin:0 auto;
+    line-height: 125%;
+    position: absolute;
+    z-index:99;
+    height: 100%;
+}
+
+div.carousel-message div{
+	width:950px;
+	margin:0 auto;
+	display:block;
+	position:relative;
+	height:100%;
+}
+
+div.carousel-message div span{
+    display: block;
+    position: relative;
+    top: 52%;
 }
 
 .pagination ul > li > a, .pagination ul > li > span {
@@ -246,12 +273,15 @@ body > header h1 {
     font-size: 13px;
     font-weight: bold;
     line-height: 16px;
-    padding-top: 55px;
     text-transform: uppercase;
+    margin-top:38px;
+    padding:0 24px;
+    border-left:1px #c6b9a6 solid;
 }
 
 .head-box1 span{
 	color:#000;
+	font-size: 12px;
 }
 
 .p6 {padding-top:26px !important;}
@@ -295,7 +325,7 @@ body > header h1 {
 }
 
 .head-line {
-	width:950px;
+	width:100%;
 	margin:19px auto 0;
 	background:#d54e40;
 	height:3px;
@@ -312,7 +342,7 @@ ul.sbuttons li{
 	float:left;
 	width:25px;
 	height:25px;
-	margin-left:5px;
+	margin-left:8px;
 }
 
 ul.sbuttons li a{
@@ -336,6 +366,9 @@ form.search input[type=text]{
 	padding: 0 30px 0 5px;
     width: 153px;
     float: right;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
 }
 
 form.search .submit{
@@ -356,6 +389,8 @@ form.search .submit:hover{
 body > header .main nav .sel-menu{
 	display:none;
 }
+
+body > header .searchAndIcons{float:right;}
 
 /*** MENU ***/
 .sf-menu, .sf-menu * {
@@ -381,10 +416,14 @@ header.content nav {
 	bottom:0;
 }
 
-nav ul {
+header nav ul {
 	display:block;
-	width:940px;
+	width:960px;
 	margin:0 auto !important;
+}
+
+header.index nav ul {
+	width:940px;
 }
 
 .p13 {
@@ -401,14 +440,14 @@ nav ul {
 }
 .sf-menu li.mainmenu {
 	float:			left;
-	width:156px;
+	width:160px;
 	text-align:center;
 	position:		relative;
 	padding-bottom:3px;
 }
-.sf-menu li.mainmenu:last-child{
-	padding-right: 4px;
-}
+
+header.index .sf-menu li.mainmenu{width:156px;}
+header.index .sf-menu li.mainmenu:last-child{padding-right: 4px;}
 
 .sf-menu a {
 	display:		block;
@@ -551,7 +590,7 @@ ul.sf-menu li li li.sfHover ul {
 #content .grid-container #breadcrumb{
 	padding:28px 0 22px;
 	width:100%;
-	border-bottom:1px #9c8f7f solid;
+	border-bottom:1px #d3ccbf solid;
 	margin: 0 0 25px;
 }
 
@@ -677,7 +716,11 @@ ul.sf-menu li li li.sfHover ul {
 .page1-box4 h3{margin-bottom:25px;}
 
 .page1-box4 img {
-    padding: 6px 0 4px;
+    padding: 22px 0 4px;
+}
+
+.page1-box4 article.grid-60{
+	padding-left:0px;
 }
 
 .page1-box2 img {
@@ -712,6 +755,7 @@ ul.sf-menu li li li.sfHover ul {
 .page1-box2 {
 	overflow:hidden;
 	margin-bottom:23px;
+	padding-right: 35px;
 }
 
 .page1-box2 h3{
@@ -724,6 +768,8 @@ ul.sf-menu li li li.sfHover ul {
 	margin-top:0;
 }
 
+.page1-box4 article.grid-60 p{color:#7f7566;}
+
 .page1-box2 p{
 	color:#d54e40;
 }
@@ -734,7 +780,7 @@ ul.sf-menu li li li.sfHover ul {
 
 .page1-box3 h4{
 	font-size: 13px;
-	margin:15px 0;
+	margin:18px 0;
 }
 
 .p36 {line-height:18px;}
@@ -769,7 +815,7 @@ ul.sf-menu li li li.sfHover ul {
 .banner1 span {
     color: #323232;
     display: block;
-    font-family: 'Covered By Your Grace',cursive;
+    font-family: 'Over the Rainbow',cursive;
     font-size: 32px;
     line-height: 27px;
     margin-bottom: 5px;
@@ -864,7 +910,7 @@ ul.sf-menu li li li.sfHover ul {
 
 #content .contact .bloc1{
 	padding:0 0 35px;
-	border-bottom:1px #9c8f7f solid;
+	border-bottom:1px #d3ccbf solid;
 	margin: 0 0 25px;
 }
 
@@ -956,11 +1002,17 @@ ul.sf-menu li li li.sfHover ul {
 #content nav.menu ul li {
     background: url("../img/marker1.png") no-repeat scroll 0 5px transparent;
     display: block;
-    font-size: 17px !important;
+    font-size: 15px !important;
     line-height: 20px;
     padding-bottom: 15px;
     padding-left: 13px;
     width: 200px;
+    text-transform: uppercase;
+}
+
+#content nav.menu ul li.selected a{
+    color: #9C8F7F;
+    text-decoration: none;
 }
 
 #content nav.menu ul li a {
@@ -969,7 +1021,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #content nav.menu ul li a:hover {
-    color: #B2B2B2;
+    color: #9C8F7F;
     text-decoration: none;
 }
 
@@ -1037,8 +1089,8 @@ footer nav.menu ul li {
     font-weight: 600;
     position: absolute;
     left: 93px;
-    text-transform: capitalize;
-    width: 180px;
+    text-transform: uppercase;
+    width: 200px;
 }
 
 .foot-page2{
@@ -1052,6 +1104,7 @@ footer nav.menu ul li {
 
 .foot-page2 .title{
 	font-size:16px;
+	text-transform: uppercase;
 }
 
 .foot-page2 .name{

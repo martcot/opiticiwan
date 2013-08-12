@@ -1,0 +1,59 @@
+{% extends "wg_projets/projet_base.html" %}
+{% load attachments_tags %}
+
+{% block desc %}
+	<div class="projet-description"> 
+		{{ projet.description|safe }}
+	</div>
+	
+	{% if user.is_authenticated %}
+		
+		{% if not projet.certification %}
+			<p class="align-right" style="margin-right: 20px;"><a href="javascript:FadeIn('#moderation-projet-{{ projet.id }}')">Dénoncer ce projet</a></p>
+		{% else %}
+			<p class="align-right">Projet certifié</p>
+		{% endif %}
+			
+	{% endif %}
+	
+
+	<div id="moderation-projet-{{ projet.id }}" style="display: none" class="moderation-base">
+
+		<form action="/denonciations/denoncer/" method="post">
+
+			{% csrf_token %}
+
+			<input type="hidden" name="next" value="{{ request.path }}"/>
+			<input type="hidden" name="object_id" value="{{ projet.id }}"/>
+			<input type="hidden" name="model" value="projet"/>
+
+			<label for="raison"><b>Inscrivez la raison</b></label><br/>
+			<textarea rows="5" cols="40" name="denonciation"></textarea><br/><br/>
+
+			<input type="submit" value="Envoyer"/>
+
+		</form>
+
+	</div>
+	
+{% endblock %}
+
+{% block attachements %}
+	
+	<div class="info-base-attachements ">
+		
+		{% get_attachments_for projet as "attachments_list" %}
+		
+		{% for att in attachments_list %}
+    		<p><a href="{{ MEDIA_URL }}{{ att.attachment_file }}">{{ att.file_name }}</a></p>
+			
+		{% empty %}
+			
+		{% endfor %}
+		
+	</div>
+	
+{% endblock %}
+
+
+
