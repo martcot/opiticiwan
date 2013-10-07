@@ -43,7 +43,7 @@
 		height:300px;
 	}
 	#content .contact .bloc1 .map{margin-bottom:25px;}
-	#content .contact .cform{width:100%;}
+	#content .contact .cform{width:100%;margin-bottom:40px;}
 	#content .page1-box4 img{padding-top:0;}
 }
 
@@ -58,6 +58,7 @@
 		
 	}
 	body > footer .menu{width:100%;}
+	#content .contacts article.contact{width:100%;}
 	
 }
 

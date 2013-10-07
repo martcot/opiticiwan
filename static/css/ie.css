@@ -1,25 +1,27 @@
 form.search .submit{
-	top:5px !important;
+        top:5px !important;
 }
 .sf-menu ul.submenu{
-	left:0;
+        left:0;
 }
 .foot-page1 span{
-	bottom:5px !important;
+        bottom:5px !important;
 }
 #content .page1-box1 .inner1{
-	width:25% !important;
-	border-right:none !important;
+        width:25% !important;
+        border-right:none !important;
 }
 #content .page1-box1 .inner1 span.text3{
-	padding:0 20px;
-	margin-right:0 !important;
-	margin-left:0 !important;
+        padding:0 20px;
+        margin-right:0 !important;
+        margin-left:0 !important;
 }
 #content .page1-box1 .inner1 p{
-	padding:0 20px;
+        padding:0 20px;
 }
 #content .page1-box1 .inner1 a.link2{
-	bottom:20px !important;
-	left:20px;
+        bottom:20px !important;
+        left:20px;
 }
+
+.nav-collapse_ .nav > li{ width:117px !important; }

@@ -1,0 +1,6 @@
+{% load i18n %}
+{% for ance in ancestors %}
+<li>{% if not forloop.last or event.title or page > 1 %}<a href="{{ ance.get_absolute_url }}">{{ ance.get_menu_title }}</a> > {% else %}{{ ance.get_menu_title }}{% endif %}</li>
+{% endfor %}
+{% if page > 1 %}<li>{% trans "Page" %} {{page}}</li>{% endif %}
+{% if event.title %}<li>{{event.title}}</li>{% endif %}

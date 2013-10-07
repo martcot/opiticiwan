@@ -46,31 +46,61 @@
                     {% placeholder "home_content_left1" %}
                 </article>
             </article>
-            <article class="grid-35 page1-box2">
-				{% placeholder "home_content2" %}
+            <div class="grid-35">
+            	<article class="grid-100 page1-box2">
+					{% placeholder "home_content2" %}
+				</article>
+	            <article class="grid-100">
+	                <a href="#emailSubscription" id="emailSubscription_open" class="banner1">
+	                	<span>{% trans "Suivez-nous" %}</span>
+	                    <strong>{% trans "Par courriel" %}</strong>
+	                </a>
+	                <div class="hide">
+		                <div id="emailSubscription" class="grid-100">
+		                	<h3>{% trans "Inscription aux infolettres" %}</h3>
+				            {% if emailform.message %}
+				                <div class="alert alert-{{emailform.mtype}}">{{ emailform.message }}</div>
+				            {% endif %}
+		                	{% crispy emailform %}
+		                </div>
+	                </div>
+	            </article>
+            </div>
+            
+            <article id="events-calendar" class="grid-25">
+            	<h3 class="p9">{% trans "Évènements" %}</h3>
+            	<div class="calendar"> </div>
+            	<div class="legend">
+            		<span class="highlight1"> </span> = {% trans "Évènements" %}<br/>
+            		<span class="highlight2"> </span> = {% trans "Séances du conseil" %}
+            	</div>
+            	<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">  
+						<a class="close" data-dismiss="modal">×</a>  
+						<h3>{% trans "Évènement" %}</h3>  
+					</div>
+	                <div class="modal-body">
+	                	<p>{% trans "Date et heure :" %} <strong> </strong></p>
+	                	<p class="description"> </p>
+	            	</div>
+					<div class="modal-footer">  
+						<a href="#" class="btn btn-primary btn-orange">Voir les détails</a>  
+						<a href="#" class="btn" data-dismiss="modal">{% trans "Fermer" %}</a>  
+					</div>
+	            </div>
             </article>
             <article class="grid-25">
-{{poll|safe}}
-                <a href="#emailSubscription" id="emailSubscription_open" class="banner1">
-                	<span>{% trans "Suivez-nous" %}</span>
-                    <strong>{% trans "Par courriel" %}</strong>
-                </a>
-                <div class="hide">
-	                <div id="emailSubscription" class="grid-100">
-	                	<h3>{% trans "Inscription aux infolettres" %}</h3>
-			            {% if emailform.message %}
-			                <div class="alert alert-{{emailform.mtype}}">{{ emailform.message }}</div>
-			            {% endif %}
-	                	{% crispy emailform %}
-	                </div>
-                </div>
-            </article>
+				{{poll|safe}}
+			</article>
 {% addtoblock "css" %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui/jquery-ui-1.10.3.custom.css">
 <link href='http://fonts.googleapis.com/css?family=Over+the+Rainbow' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.css">
 {% endaddtoblock %}
 {% addtoblock "js" %}
 	<script src="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery-ui-1.10.3.custom.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.ui.datepicker-fr-CA.js"></script>
     <script>
 		$('#myCarousel').carousel();
 		$('.carousel-linked-nav > li > a').click(function() {
@@ -85,12 +115,64 @@
 		    var idx = $('#myCarousel .item.active').index();
 		    $('.carousel-linked-nav li:eq(' + idx + ')').addClass('active');
 		});
+		
 		$("#emailSubscription_open").fancybox();
+		
 		{% if emailform.message %}
 		$(document).ready(function() {
         	$("#emailSubscription_open").fancybox().trigger('click');
     	});
     	{% endif %}
+    	
+		var events = [{% for event in events %}
+				{ Title:"{{event.title}}", 
+				  Date: new Date("{{event.date|date:"m/d/Y"}}"),
+				  DateString: "{{event.date|date:"d F Y g:s A"}}",
+				  ShortDesc: "{{event.short_content}}",
+				  Slug: "{{event.slug}}",
+				  Type:"{{event.type}}"
+				}{% if not forloop.last %},{% endif %}
+		{% endfor %}];
+		
+		jQuery(function ($) {
+			$("#events-calendar .calendar").datepicker({
+			    beforeShowDay: function(date) {
+			        var result = [true, '', null];
+			        var matching = $.grep(events, function(event) {
+			            return event.Date.valueOf() === date.valueOf();
+			        });
+			        if (matching.length) {
+			        	if(matching[0].Type == "sdc")
+			            	result = [true, 'highlight2', null];
+			            else
+			            	result = [true, 'highlight1', null];
+			        }
+			        return result;
+			    },
+			    onSelect: function(dateText) {
+			    	dateplited = dateText.split("-");
+			        var date,
+			            selectedDate = new Date(dateplited[0],dateplited[1]-1,dateplited[2]),
+			            i = 0,
+			            event = null;
+			        while (i < events.length && !event) {
+			            date = events[i].Date;
+			            if (selectedDate.valueOf() === date.valueOf()) {
+			                event = events[i];
+			            }
+			            i++;
+			        }
+			        
+			        if (event) {
+			            $('#eventModal h3').html(event.Title);
+			            $('#eventModal p.description').html(event.ShortDesc);
+			            $('#eventModal p strong').html(event.DateString);
+			            $('#eventModal a.btn-orange').prop('href','{% page_url 43 %}' + event.Slug + '/');
+			            $('#eventModal').modal('show');
+			        }
+			    }
+			});
+		});
     </script>
 {% endaddtoblock %}
 {% endblock %}

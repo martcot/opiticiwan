@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags i18n bootstrap_pagination %}
+
+{% block headerclass %}content{% endblock %}
+{% block contentclass %}events{% endblock %}
+
+{% block content %}
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb "events/breadcrumb.html" %}
+        	</ul>
+        	<nav class="menu grid-25">
+				<ul>
+					{% show_menu_below_id request.current_page.parent.reverse_id %}
+				</ul>
+            </nav>
+            <article class="grid-75">
+                <h2>{% trans "Évènements" %}</h2>
+                
+                {% for event in page_events.object_list %}
+                
+                <article class="event">
+                	<header>
+                		<a href="{{event.slug}}/"><h3>{{event.title}}</h3></a>
+                	</header>
+                	<p>{{event.short_content}}</p>
+                	<footer>
+                		<span>{% trans "Date et heure :" %} {{event.date|date:"d F Y g:s A"}}</span>
+                		<a class="link3" href="{{event.slug}}/">Voir les détails</a>
+                	</footer>
+                </article>
+                
+                {% empty %}
+					{% trans "Aucun évènements à afficher" %}
+				{% endfor %}
+            	
+                {% bootstrap_paginate page_events range=10 show_prev_next="true" show_first_last="true" %}
+            </article>
+{% endblock %}

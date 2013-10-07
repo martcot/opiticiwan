@@ -37,7 +37,16 @@ LANGUAGES = (
     ('fr', gettext('French')),
 )
 
-CMS_LANGUAGES = LANGUAGES
+CMS_LANGUAGES = {
+    1: [{'code': 'fr',
+        'name': gettext('French'),
+        'public': True,},
+    ],
+    'default': {
+        'fallbacks': ['fr',],
+        'public': False,
+    }
+}
 
 #CMS_FLAT_URLS = True
 
@@ -166,6 +175,7 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SEARCH_ENGINE = 'simple'
 HAYSTACK_SITECONF = 'app.search'
 
+
 COMPRESS_ENABLED = True
 COMPRESS_URL = '/static/'
 COMPRESS_ROOT = os.path.join(PROJECT_PATH, "static")
@@ -210,6 +220,8 @@ INSTALLED_APPS = (
     'polls',
     'galeries',
     'documents',
+    'contacts',
+    'events',
 )
 
 LOGGING = {

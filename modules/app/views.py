@@ -11,12 +11,15 @@ from django.core.mail import EmailMultiAlternatives
 from app.models import Subscription
 from news.models import News
 from polls.views import lastpoll
+from events.models import Event
 from app.forms import ContactForm,EmailForm
+from datetime import datetime, timedelta
 
 def home(request):  
     
     news = News.objects.filter(lang=request.LANGUAGE_CODE).order_by('-pub_date')[:4]
     poll = lastpoll(request)
+    events = Event.objects.filter(date__range=(datetime.now() + timedelta(-365), datetime.now() + timedelta(365)))
     
     if request.POST:
         emailform = EmailForm(request.POST)
@@ -46,7 +49,7 @@ def home(request):
         emailform.message = emailfmsg
         emailform.mtype = emailfmsg_mtype
 
-    return render_to_response('index.html', {"news":news,"poll":poll,"emailform":emailform}, context_instance=RequestContext(request))
+    return render_to_response('index.html', {"news":news,"poll":poll,"emailform":emailform,'events':events,}, context_instance=RequestContext(request))
 
 def unsubscription(request, guid):
     
@@ -69,6 +72,8 @@ def unsubscription(request, guid):
     return HttpResponseRedirect("%(link)s#emailSubscription_open" % {'link':link,})
 
 def contact(request):  
+    from contacts.models import Contact
+    contacts = Contact.objects.all()
     
     if request.POST:
         contactform = ContactForm(request.POST)
@@ -86,7 +91,7 @@ def contact(request):
     else:
         contactform = ContactForm()
 
-    return render_to_response('contact.html', {"form":contactform}, context_instance=RequestContext(request))
+    return render_to_response('contact.html', {"form":contactform,"contacts":contacts,}, context_instance=RequestContext(request))
 
 from django.utils.http import urlquote  as django_urlquote
 from django.utils.http import urlencode as django_urlencode

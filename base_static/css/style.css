@@ -850,6 +850,40 @@ ul.sf-menu li li li.sfHover ul {
 	padding:20px;
 }
 
+table.ui-datepicker-calendar tbody td.highlight1 > a ,#events-calendar .legend .highlight1{
+    background: #F68C24;
+    color: #333333;
+    border: 1px solid #f5b87a;
+}
+
+table.ui-datepicker-calendar tbody td.highlight2 > a ,#events-calendar .legend .highlight2{
+    background: #687c92;
+    color: #00142a;
+    border: 1px solid #607b97;
+}
+
+table.ui-datepicker-calendar tbody td.highlight1 > a:hover, table.ui-datepicker-calendar tbody td.highlight2 > a:hover{
+	color:#000000 !important;
+}
+
+#events-calendar h3{
+	margin-bottom:20px;
+}
+
+#events-calendar{
+	margin-bottom:25px;
+}
+
+#events-calendar .legend{
+	margin-top:10px;
+	padding-left:10px;
+}
+
+#events-calendar .legend .highlight1, #events-calendar .legend .highlight2{
+	display:inline-block;
+	padding:7px;
+}
+
 #content .news .grid-75 h2{ margin:0 0 34px; }
 
 #content .news .grid-75 article.new{
@@ -894,7 +928,57 @@ ul.sf-menu li li li.sfHover ul {
 	color:#f68c24;
 }
 
+
 #content .news .grid-75 article.new header a h3:hover,#content .news .grid-75 article.new header a:hover{
+	color:#323232;
+	text-decoration: none;
+}
+
+#content .events .grid-75 h2{ margin:0 0 34px; }
+
+#content .events .grid-75 article.event{
+	display:block;
+	padding:0 0 35px;
+	border-bottom:2px solid #c6b9a6;
+	margin-bottom:30px;
+}
+
+#content .events .grid-75 article.event p{
+	padding-bottom: 28px;
+	font-size: 107%;
+}
+
+#content .events .grid-75 article.event footer span{
+	font-style:italic;
+	float: left;
+}
+
+#content .events article.detail header h2{
+	margin-bottom:5px;
+}
+
+#content .events article.detail header span{
+	font-style:italic;
+	font-size:15px;
+}
+
+#content .events article.detail header{
+	margin-bottom:30px;
+}
+
+#content .events .grid-75 article.event a.link3{
+	float:right;
+}
+
+#content .events header{
+	background:none;
+}
+
+#content .events .grid-75 article.event header a h3{
+	color:#f68c24;
+}
+
+#content .events .grid-75 article.event header a h3:hover,#content .events .grid-75 article.event header a:hover{
 	color:#323232;
 	text-decoration: none;
 }
@@ -953,7 +1037,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 
 #content #sondage ul{
-	margin: 0 0 25px 0;
+	margin: 0;
 }
 
 #content .documents nav.menu ul ul li{
@@ -996,6 +1080,48 @@ ul.sf-menu li li li.sfHover ul {
 	color:#323232;
 	text-decoration: none;
 }
+
+#content .conseil article.conseiller{
+	float:left;
+	height:335px;
+	text-align:center;
+}
+
+#content .conseil article.conseiller h3{
+	color:#323232;
+	font-size:17px;
+	margin: 10px 0;
+}
+
+#content .conseil article.conseiller span{
+	font-size:15px;
+}
+
+#content .contacts article.contact{
+	float:left;
+	height:120px;
+	text-align:left;
+}
+
+#content .contacts article.contact h4{
+	margin:0 0 10px;
+	font-size: 15px;
+}
+
+#content .contacts article.contact h4 .icon{
+	margin-right:7px;
+}
+
+#content .contacts article.contact span.poste{
+	font-weight:600;
+}
+
+#content .contacts article.contact span.tel{
+	font-style:italic;
+}
+
+#content .contact .cform{padding-right:25px;}
+#content .contact .cform #contactForm{padding: 0;}
 
 #content nav.menu ul{width:100%;}
 

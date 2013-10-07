@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags sekizai_tags i18n thumbnail %}
+
+{% block headerclass %}conseil{% endblock %}
+
+{% block content %}
+        	<ul id="breadcrumb" class="grid-100 clearfix">
+        		{% show_breadcrumb "app/breadcrumb.html" %}
+        	</ul>
+        	<nav class="menu grid-25">
+				<ul>
+					{% show_menu_below_id request.current_page.parent.reverse_id %}
+				</ul>
+            </nav>
+            <article class="grid-75">
+                <h2>{% trans "Membres du conseil" %}</h2>
+                <div class="clearfix">
+	                {% for conseiller in conseil %}
+	                
+	                <article class="conseiller grid-33">
+	                    <a rel="group1" href="{{ MEDIA_URL }}{{ conseiller.photo }}">
+	                        {% thumbnail conseiller.photo "200x250" crop="center" as im %}
+	                            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ conseiller.nom }}">
+	                        {% endthumbnail %}
+	                    </a>
+	                    <h3>{{conseiller.nom}}</h3>
+	                    <span>{{conseiller.titre}}</span>
+	                </article>
+	                
+	                {% empty %}
+						{% trans "Aucun conseiller à afficher pour l'instant" %}
+	                {% endfor %}
+	        	</div>
+            </article>
+            {% addtoblock "css" %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.css">
+            {% endaddtoblock %}
+			{% addtoblock "js" %}
+			<script src="{{ STATIC_URL }}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+			<script>
+			    $(document).ready(function() {
+			        $("article.conseiller a").fancybox();
+			    });
+			</script>
+			{% endaddtoblock %}
+{% endblock %}

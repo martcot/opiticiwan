@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load cms_tags menu_tags sekizai_tags crispy_forms_tags %}
+{% load cms_tags menu_tags sekizai_tags crispy_forms_tags i18n %}
 
 {% block headerclass %}content{% endblock %}
 
@@ -9,21 +9,34 @@
             		{% show_breadcrumb "app/breadcrumb.html" %}
             	</ul>
                 <div class="grid-100 bloc1">
-                	<h3>Nous trouver</h3>
-                    <article class="map grid-75">
-                        <iframe id="gm" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ca/maps?ie=UTF8&amp;cid=2593687207979332204&amp;q=Conseil+des+Atikamekw+d'Opitciwan&amp;gl=CA&amp;hl=fr&amp;t=m&amp;iwloc=A&amp;ll=48.659001,-74.938688&amp;spn=0.006295,0.006295&amp;&output=embed&iwloc=near">
-                        </iframe>
-                    </article>
+	                <div class="cform grid-75">
+	                	<h3>Formulaire de contact</h3>
+			            {% if form.message %}
+			                <div class="alert alert-{{form.mtype}}">{{ form.message }}</div>
+			            {% endif %}
+			            {% crispy form %}
+	                </div>
                 	<article class="location grid-25">
+                		<h3>Nous trouver</h3>
                     	{% placeholder "location" %}
                     </article>
                 </div>
-                <div class="cform grid-80">
-                	<h3>Formulaire de contact</h3>
-		            {% if form.message %}
-		                <div class="alert alert-{{form.mtype}}">{{ form.message }}</div>
-		            {% endif %}
-		            {% crispy form %}
+                <div class="grid-100 contacts">
+                	<h3>Contacts</h3>
+                	<div class="clearfix">
+                		{% for contact in contacts %}
+                		
+		                <article class="contact grid-33">
+		                    <h4><i class="icon icon-user"> </i>{{contact.nom}}</h4>
+		                    <span class="poste">{{contact.poste}}</span><br/>
+		                    Tel: <span class="tel">{{contact.tel}}</span><br/>
+		                    <a href="mailto:{{contact.email}}">{{contact.email}}</a>
+		                </article>
+                		
+                		{% empty %}
+                			{% trans "Aucun contacts à afficher pour l'instant" %}
+                		{% endfor %}
+                	</div>
                 </div>
             </div>
 {% endblock %}
